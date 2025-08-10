@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Revolt Technology — QA Escape Plan™</title>
+  <meta name="description" content="Land your first tech job in 60 days. No code. No degree. Stay With You Till You're Hired Guarantee.">
+
+  <style>
+    :root{
+      --primary-color: #396df0;
+      --secondary-color: #1b2857;
+      --light-gray: #f5f7fa;
+      --white: #ffffff;
+      --text-dark: #1a1a1a;
+      --text-light: #6b7280;
+      --success: #16A34A;
+      --radius: 12px;
+      --max-width: 1100px;
+      --container-pad: 20px;
+      --shadow-sm: 0 6px 18px rgba(23,23,23,0.06);
+      --glass: rgba(255,255,255,0.6);
+      --break-lg: 1024px;
+      --break-md: 768px;
+      --break-sm: 480px;
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--white);
+      color: var(--text-dark);
+      margin:0;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      -webkit-text-size-adjust:100%;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    /* Container */
+    .wrap{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 28px var(--container-pad);
+    }
+
+    /* Top badge */
+    .top-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background: linear-gradient(90deg, rgba(57,109,240,0.06), rgba(27,40,87,0.03));
+      color: var(--secondary-color);
+      border-radius:999px;
+      padding:8px 14px;
+      font-weight:600;
+      font-size:13px;
+      margin-bottom:14px;
+    }
+    .top-badge .danger{color:#7a2f00;font-weight:800}
+
+    /* HERO */
+    .hero{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      background: var(--light-gray);
+      border-radius: 14px;
+      padding: 34px;
+      box-shadow: var(--shadow-sm);
+      overflow:hidden;
+    }
+
+    .hero-left{flex:1 1 520px;min-width:260px;animation: slideInLeft .7s cubic-bezier(.2,.9,.2,1)}
+    .hero-right{flex:1 1 420px;display:flex;justify-content:center;align-items:center;min-width:220px;animation: fadeInRight .7s cubic-bezier(.2,.9,.2,1)}
+
+    .caps{font-size:12px;font-weight:800;color:var(--primary-color);letter-spacing:.06em;margin-bottom:8px}
+
+    h1{
+      margin:0 0 10px 0;
+      color:var(--secondary-color);
+      font-size: clamp(1.4rem, 3.6vw, 2.1rem);
+      line-height:1.06;
+      letter-spacing:-0.01em;
+    }
+
+    .sub{color:var(--text-light);margin-bottom:14px;font-size:1rem}
+
+    .feature-list{list-style:none;padding:0;margin:0 0 18px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;max-width:520px}
+    .feature_list_item{display:flex;align-items:center;gap:10px;color:var(--text-dark);font-weight:700}
+    .feature_list_item .check{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--primary-color);color:var(--white);font-size:14px;box-shadow:0 6px 14px rgba(57,109,240,0.12)}
+
+    .cta-row{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
+    .btn{border:0;padding:12px 16px;border-radius:10px;font-weight:800;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;min-width:fit-content}
+    .btn-primary{background:linear-gradient(180deg,var(--primary-color), #2f5fda);color:var(--white);box-shadow:0 8px 24px rgba(57,109,240,0.16)}
+    .btn-primary:focus{outline:3px solid rgba(57,109,240,0.12)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-secondary{background:transparent;border:2px solid var(--primary-color);color:var(--primary-color)}
+
+    .hero-image-card{width:100%;max-width:600px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(27,40,87,0.06), rgba(57,109,240,0.02));padding:8px;box-shadow:var(--shadow-sm)}
+    .hero-image{border-radius:8px;display:block;width:100%;height:360px;object-fit:cover;background:linear-gradient(180deg,#e9f0ff,#fff)}
+
+    /* Info strip */
+    .info-strip{display:flex;gap:12px;align-items:center;margin-top:12px;color:var(--text-light);font-weight:700;flex-wrap:wrap}
+    .pill{background:var(--white);border-radius:10px;padding:8px 12px;box-shadow:var(--shadow-sm);display:inline-flex;gap:8px;align-items:center}
+    .countdown{font-weight:900;color:var(--secondary-color)}
+
+    /* Sections */
+    section.content{padding:40px 0;border-bottom:1px solid #f0f2f6}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .section-title{font-size:1.2rem;color:var(--secondary-color);font-weight:800}
+    .muted{color:var(--text-light);font-weight:600}
+
+    /* Two-column area */
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start}
+    .pain-list{list-style:none;padding:0;margin:6px 0 0 0;display:grid;gap:10px}
+    .pain-item{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(27,40,87,0.02), rgba(57,109,240,0.01))}
+    .pain-item .x{color:#c53030;font-weight:800;padding-top:2px}
+
+    .testimonial{background:var(--white);padding:14px;border-radius:10px;box-shadow:var(--shadow-sm)}
+    .quote{font-style:italic;color:var(--text-dark);font-weight:700}
+    .cite{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .avatar{width:48px;height:48px;border-radius:999px;overflow:hidden;background:#ddd}
+
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .step{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);text-align:left;min-height:92px}
+    .step .num{font-weight:900;color:var(--primary-color);font-size:16px}
+    .step h4{margin:6px 0;font-size:15px;color:var(--text-dark)}
+
+    /* Features grid */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .feature{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:var(--light-gray)}
+    .feature .tick{color:var(--success);font-weight:900}
+
+    /* Testimonial grid */
+    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+    /* FAQ */
+    .faq{display:grid;gap:10px}
+    .faq-item{background:var(--white);border-radius:10px;padding:12px;cursor:pointer;box-shadow:var(--shadow-sm)}
+    .faq-item h5{margin:0;font-size:15px}
+    .faq-body{margin-top:8px;color:var(--text-light);display:none}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+    .price-card{padding:16px;border-radius:12px;background:var(--white);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:12px}
+    .price-card.highlight{border:2px solid var(--primary-color);box-shadow:0 12px 36px rgba(57,109,240,0.12)}
+    .price{font-size:26px;font-weight:900;color:var(--secondary-color)}
+    .price-sub{color:var(--text-light);font-weight:700}
+    .price-cta{margin-top:auto}
+
+    .guarantee{border-radius:12px;padding:14px;background:linear-gradient(90deg,var(--secondary-color), #11214a);color:var(--white);box-shadow:0 8px 22px rgba(11,30,63,0.18);display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+    .final-cta{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px;border-radius:14px;background:linear-gradient(180deg, rgba(57,109,240,0.06), rgba(27,40,87,0.02));text-align:center}
+
+    footer{padding:22px 0;color:var(--text-light);font-size:14px}
+
+    /* Utilities */
+    .muted-sm{color:var(--text-light);font-size:13px}
+    .caps{font-size:12px;font-weight:700;color:var(--primary-color);letter-spacing:0.08em}
+    .center{display:flex;align-items:center;justify-content:center}
+    .card{padding:14px;border-radius:10px;background:var(--white);box-shadow:var(--shadow-sm)}
+
+    /* Animations */
+    @keyframes slideInLeft { from{opacity:0;transform:translateX(-36px)} to{opacity:1;transform:none} }
+    @keyframes fadeInRight { from{opacity:0;transform:translateX(26px) scale(.98)} to{opacity:1;transform:none} }
+
+    /* Responsive breakpoints */
+
+    /* Large tablets and small desktops */
+    @media (max-width: 1024px){
+      .hero{padding:28px;gap:20px}
+      .two-col{grid-template-columns:1fr 320px}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:repeat(2,1fr)}
+      .test-grid{grid-template-columns:repeat(2,1fr)}
+      .feature-list{grid-template-columns:1fr 1fr}
+    }
+
+    /* Medium (tablets) */
+    @media (max-width: 768px){
+      :root{--container-pad:18px}
+      .wrap{padding:22px var(--container-pad)}
+      .hero{flex-direction:column;align-items:flex-start;padding:20px}
+      .hero-left{width:100%}
+      .hero-right{width:100%;order:2}
+      .hero-image{height:260px}
+      .feature-list{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr;gap:18px}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:1fr}
+      .test-grid{grid-template-columns:1fr}
+      .cta-row{flex-direction:row;gap:10px}
+      .btn{padding:12px 14px}
+      .price{font-size:22px}
+      .info-strip{gap:8px}
+      .pill{padding:6px 10px;font-size:14px}
+      
+      /* Adjust layout for "TRUTH" section */
+      [aria-labelledby="truth-title"] .card:first-child {
+        margin-bottom: 16px;
+      }
+      [aria-labelledby="truth-title"] > div {
+        grid-template-columns: 1fr !important;
+      }
+      
+      /* Adjust layout for "WHAT YOU GET" section */
+      [aria-labelledby="what-title"] > div {
+        grid-template-columns: 1fr !important;
+      }
+      [aria-labelledby="what-title"] aside {
+        margin-top: 16px;
+      }
+      
+      /* Pricing cards */
+      .pricing {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      /* Guarantee banner */
+      .guarantee {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px){
+      :root{--container-pad:14px}
+      .wrap{padding:18px var(--container-pad)}
+      .hero{padding:16px;border-radius:10px}
+      h1{font-size:1.5rem; line-height:1.2}
+      .sub{font-size:14px}
+      .hero-image{height:200px}
+      .cta-row{flex-direction:column;align-items:stretch;gap:8px}
+      .btn{width:100%;padding:12px;font-size:15px}
+      .feature_list_item{font-size:14px;gap:8px}
+      .caps{font-size:11px}
+      .steps{grid-template-columns:1fr;gap:8px}
+      .feature{font-size:14px;padding:10px}
+      .price{font-size:20px}
+      .hero-image-card{padding:6px}
+      .top-badge{font-size:12px;padding:6px 10px;flex-direction:column;align-items:flex-start;gap:4px}
+      .top-badge .danger{margin-right:4px}
+      
+      /* Section adjustments */
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .section-title {
+        font-size: 1.1rem;
+      }
+      .content {
+        padding: 30px 0;
+      }
+      
+      /* Testimonial adjustments */
+      .testimonial {
+        padding: 12px;
+      }
+      .cite {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      
+      /* Final CTA */
+      .final-cta {
+        padding: 20px 16px;
+      }
+      .final-cta h2 {
+        font-size: 1.3rem;
+      }
+      
+      /* Footer */
+      footer > div {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+    }
+
+    /* Extra small phones */
+    @media (max-width: 360px) {
+      :root{--container-pad:12px}
+      .wrap{padding:16px var(--container-pad)}
+      h1{font-size:1.4rem}
+      .btn{font-size:14px}
+      .pill{font-size:13px}
+      .info-strip{gap:6px}
+      
+      /* Hero image */
+      .hero-image {
+        height: 180px;
+      }
+      
+      /* Feature list items */
+      .feature_list_item .check {
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+      }
+      
+      /* Steps */
+      .step {
+        min-height: auto;
+        padding: 10px;
+      }
+      .step h4 {
+        font-size: 14px;
+      }
+      
+      /* Pricing */
+      .price {
+        font-size: 18px;
+      }
+    }
+
+    /* Focus visible */
+    :focus{outline:none}
+    .btn:focus{box-shadow:0 0 0 4px rgba(57,109,240,0.12)}
+  </style>
+</head>
+<body>
+  <main class="wrap" aria-labelledby="main-heading">
+    <div class="top-badge" role="status" aria-live="polite">
+      <span class="danger">⚠ Not for Everyone</span>
+      <span class="muted-sm">Only serious career switchers ready to break into tech — fast</span>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="main-heading">
+      <div class="hero-left">
+        <div class="caps">Revolt Technology — QA Escape Plan™</div>
+        <h1 id="main-heading">Land Your First Tech Job in 60 Days — or We Stay With You Until You Do</h1>
+        <p class="sub">No Code. No Degree. No Fluff. Just a Paycheck. Backed by our "Stay With You Till You're Hired" Guarantee.</p>
+
+        <ul class="feature-list" aria-hidden="false">
+          <li class="feature_list_item"><span class="check">✓</span> Beginner-friendly</li>
+          <li class="feature_list_item"><span class="check">✓</span> Real coaching (not just videos)</li>
+          <li class="feature_list_item"><span class="check">✓</span> Job referrals included</li>
+          <li class="feature_list_item"><span class="check">✓</span> Start for €400 — or €0 with Pay-When-Hired plan</li>
+        </ul>
+
+        <div class="cta-row">
+          <button class="btn btn-primary" id="applyBtn">Apply to Join the QA Escape Plan™</button>
+          <button class="btn btn-secondary" id="blueprintBtn">Download the Free QA Escape Blueprint</button>
+        </div>
+
+        <div class="info-strip" style="margin-top:14px">
+          <div class="pill">
+            <div class="small">📆 Next Cohort Starts</div>
+            <div style="font-weight:900;color:var(--secondary-color);margin-left:6px" id="cohortDate">Monday</div>
+          </div>
+
+          <div class="pill center">
+            <div style="font-size:14px;margin-right:8px">⏳</div>
+            <div>
+              <div class="small muted-sm">Enrollment closes in</div>
+              <div class="countdown" id="countdown">Loading…</div>
+            </div>
+          </div>
+
+          <div class="pill">
+            <div class="small">🧑‍🏫 Only <strong>12</strong> seats per cohort</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="false">
+        <div class="hero-image-card" role="img" aria-label="Student celebrating QA job, placeholder">
+          <img class="hero-image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=317a5b4d7fb9b7b5d3f74c2a5966fa56" alt="Student celebrating success">
+        </div>
+      </div>
+    </section>
+
+    <!-- PAIN -->
+    <section class="content" aria-labelledby="pain-title">
+      <div class="section-head">
+        <div>
+          <div class="section-title" id="pain-title">Stuck, Burnt Out & Overlooked</div>
+          <div class="muted">You've done everything "right" — and yet, you're stuck.</div>
+        </div>
+        <div class="muted-sm">Real problem. Real escape plan.</div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <ul class="pain-list">
+            <li class="pain-item"><div class="x">❌</div><div><strong>Long hours</strong> in a job you hate — and still no future.</div></li>
+            <li class="pain-item"><div class="x">❌</div><div><strong>No freedom.</strong> No flexibility. No career path.</div></li>
+            <li class="pain-item"><div class="x">❌</div><div>You're told to "learn to code" — but it's overwhelming and unnecessary for QA.</div></li>
+            <li class="pain-item"><div class="x">❌</div><div>Bootcamps want €6K+ and often leave you to figure it out alone.</div></li>
+          </ul>
+
+          <p style="margin-top:14px" class="muted-sm">If any of this sounds familiar — you're in the right place. We teach a repeatable system that actually gets people hired fast.</p>
+        </div>
+
+        <aside>
+          <div class="testimonial">
+            <div class="quote">"I was working in a bakery. Now I'm making €3,200/month as a QA Analyst. I did it in 57 days — with no tech background."</div>
+            <div class="cite">
+              <div class="avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&s=2b8ca7d8b30b2a8a8d68a3bb5a6a9b4a" alt="Maya"></div>
+              <div>
+                <div style="font-weight:800">Maya S.</div>
+                <div class="muted-sm">QA Escape Plan Grad</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TRUTH -->
+    <section class="content" aria-labelledby="truth-title">
+      <div class="section-head">
+        <div>
+          <div class="section-title" id="truth-title">You Don't Need to Code</div>
+          <div class="muted">Here's what nobody tells you.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
+        <div class="card">
+          <p style="font-weight:800;margin:0 0 8px">🚫 You don't need to code to get into tech</p>
+          <p class="muted-sm" style="margin:0 0 12px">🚫 You don't need a computer science degree. ✅ You need a system that works — fast, clear, and beginner-safe.</p>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div class="pill">✅ Proven 60-day path</div>
+            <div class="pill">✅ 1:1 coaching</div>
+            <div class="pill">✅ Job referrals</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:800;color:var(--primary-color)">INTRODUCING: QA ESCAPE PLAN™</div>
+          <div class="muted-sm" style="margin-top:8px">A 60-day, zero-fluff coaching program that gets you hired in Manual QA — the fastest-growing, non-coding tech job in the world.</div>
+          <ul style="margin-top:12px">
+            <li class="muted-sm">Built for career switchers & non-tech backgrounds</li>
+            <li class="muted-sm">We stay with you until hired</li>
+            <li class="muted-sm">Small cohorts — high-touch coaching</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="content" aria-labelledby="how-title">
+      <div class="section-head">
+        <div>
+          <div class="section-title" id="how-title">How Our System Works</div>
+          <div class="muted">A proven, repeatable, beginner-safe path.</div>
+        </div>
+        <div class="muted-sm">Step-by-step — from zero to job-ready</div>
+      </div>
+
+      <div class="steps" role="list" aria-label="Steps">
+        <div class="step" role="listitem"><div class="num">Step 1</div><h4>Learn QA Tools & Workflow</h4><div class="muted-sm">Jira, TestRail, TestLink, working with teams.</div></div>
+        <div class="step" role="listitem"><div class="num">Step 2</div><h4>Build a Job-Ready Portfolio</h4><div class="muted-sm">Resume revamp, LinkedIn optimization & case studies.</div></div>
+        <div class="step" role="listitem"><div class="num">Step 3</div><h4>Train for Real Interviews</h4><div class="muted-sm">Mock sessions, live coaching, feedback loops.</div></div>
+        <div class="step" role="listitem"><div class="num">Step 4</div><h4>Enter the Hiring Pipeline</h4><div class="muted-sm">Referrals, focused job search & we stay with you until hired.</div></div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="content" aria-labelledby="what-title">
+      <div class="section-head">
+        <div>
+          <div class="section-title" id="what-title">What You Actually Get</div>
+          <div class="muted">Everything you need to get hired — nothing you don't.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start">
+        <div>
+          <div class="features-grid" aria-hidden="false">
+            <div class="feature"><div class="tick">✓</div><div><strong>6-week Manual QA curriculum</strong><div class="muted-sm">Hands-on & job-focused</div></div></div>
+            <div class="feature"><div class="tick">✓</div><div><strong>Real tools (Jira, TestRail)</strong><div class="muted-sm">Used daily by QA teams</div></div></div>
+            <div class="feature"><div class="tick">✓</div><div><strong>Resume + LinkedIn revamp</strong><div class="muted-sm">HR-friendly & ATS-safe</div></div></div>
+            <div class="feature"><div class="tick">✓</div><div><strong>Mock interviews</strong><div class="muted-sm">With real hiring Qs</div></div></div>
+            <div class="feature"><div class="tick">✓</div><div><strong>1:1 coaching & job referrals</strong><div class="muted-sm">We connect you to roles</div></div></div>
+            <div class="feature"><div class="tick">✓</div><div><strong>Lifetime community access</strong><div class="muted-sm">Network & support</div></div></div>
+          </div>
+
+          <div style="margin-top:14px" class="card">
+            <strong>Fast Action Bonuses (This Cohort Only):</strong>
+            <ul style="margin:8px 0 0 18px">
+              <li class="muted-sm">QA Resume Pack + Templates</li>
+              <li class="muted-sm">CV Audit Call (Value: €99)</li>
+              <li class="muted-sm">Job-Ready Portfolio Review</li>
+              <li class="muted-sm">"QA Interview Vault" Video Library</li>
+              <li class="muted-sm">Bonus: Intro to Automation (optional)</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="card">
+          <div style="font-weight:800;color:var(--primary-color)">Limited Seats</div>
+          <div class="muted-sm" style="margin-top:8px">Small cohorts mean focused coaching and real feedback.</div>
+          <div style="margin-top:12px" class="muted-sm">We only accept committed applicants. This isn't a passive course — you'll be coached, critiqued, and put into hiring paths.</div>
+          <div style="margin-top:14px" class="pill">✅ Stay With You Till You're Hired Guarantee</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="content" aria-labelledby="proof-title">
+      <div class="section-head">
+        <div>
+          <div class="section-title" id="proof-title">Proof Over Promise</div>
+          <div class="muted">Real students. Real offers. Real paychecks.</div>
+        </div>
+      </div>
+
+      <div class="test-grid" aria-live="polite">
+        <div class="card"><div class="muted-sm">"I used to earn €1,400/mo in retail. Now I earn €3,100 in QA."</div><div class="muted-sm" style="margin-top:8px">— Jonah R.</div></div>
+        <div class="card"><div class="muted-sm">"Got rejected 7 times before. With this program I finally had a system."</div><div class="muted-sm" style="margin-top:8px">— Aisha K.</div></div>
+        <div class="card"><div class="muted-sm">"From unemployed grad to remote tech job in 7 weeks."</div><div class="muted-sm" style="margin-top:8px">— Tom L.</div></div>
+      </div>
+
+      <div style="margin-top:14px; display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-secondary" id="watchStories">Watch 60-Second Student Stories</button>
+        <button class="btn btn-secondary" id="seeOffers">See Faces + Offer Letters + Paychecks</button>
+      </div>
+    </section>
+
+    <!-- OBJECTIONS -->
+    <section class="content" aria-labelledby="faq-title">
+      <div class="section-head">
+        <div>
+          <div class="section-title" id="faq-title">Objection-Slaying</div>
+          <div class="muted">Short, honest answers to the common questions.</div>
+        </div>
+      </div>
+
+      <div class="faq" id="faq">
+        <div class="faq-item" data-open="true"><h5>Is this just another course?</h5><div class="faq-body">No. Courses don't get you hired. Systems do. We coach, review your work, and connect you to real hiring paths.</div></div>
+        <div class="faq-item"><h5>What if I don't learn fast?</h5><div class="faq-body">You go at your pace. We don't disappear after 60 days — we stay with you until hired.</div></div>
+        <div class="faq-item"><h5>What if I'm broke?</h5><div class="faq-body">Start for €400 or apply for the Pay-When-Hired plan (limited spots). We prioritise applicants who need a path out now.</div></div>
+        <div class="faq-item"><h5>What if I'm too old / too late?</h5><div class="faq-body">Our grads range 19–54. We train humans, not robots. Age is experience, and employers value that.</div></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="content" aria-labelledby="pricing-title">
+      <div class="section-head">
+        <div>
+          <div class="section-title" id="pricing-title">Simple Pricing</div>
+          <div class="muted">Two clear options — both designed to remove financial barriers.</div>
+        </div>
+      </div>
+
+      <div class="pricing">
+        <div class="price-card highlight" aria-label="One-time payment option">
+          <div class="caps">Option 1</div>
+          <div class="price">€400 <span class="price-sub">one-time</span></div>
+          <div class="muted-sm">6-week program • Bonuses included • Lifetime community • Stay With You Till Hired guarantee</div>
+          <ul style="margin-left:16px">
+            <li class="muted-sm">✅ Full curriculum</li>
+            <li class="muted-sm">✅ 1:1 coaching</li>
+            <li class="muted-sm">✅ Job referrals</li>
+          </ul>
+          <div class="price-cta"><button class="btn btn-primary" id="buyNow">Enroll — €400</button></div>
+        </div>
+
+        <div class="price-card" aria-label="Pay when hired option">
+          <div class="caps">Option 2</div>
+          <div class="price">€0 <span class="price-sub">now</span></div>
+          <div class="muted-sm">Apply to qualify for the Pay-When-Hired plan (limited cohort spots).</div>
+          <ul style="margin-left:16px">
+            <li class="muted-sm">💸 No upfront cost</li>
+            <li class="muted-sm">🔁 You pay once hired</li>
+          </ul>
+          <div class="price-cta"><button class="btn btn-secondary" id="applyPayWhenHired">Apply for Pay-When-Hired</button></div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <div class="guarantee">
+          <div><div style="font-weight:800">No-Risk Guarantee</div><div class="muted-sm" style="margin-top:6px">Finish the program and don't feel job-ready? We keep working with you — or refund you.</div></div>
+          <div style="font-weight:900">You don't lose. You either get hired — or we don't stop.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section style="padding:28px 0;" aria-labelledby="final-cta">
+      <div class="final-cta card" id="final-cta">
+        <div style="max-width:760px">
+          <h2 style="margin:0 0 8px;color:var(--secondary-color)">Ready to Stop Scrolling and Start Earning?</h2>
+          <p class="muted-sm" style="margin:0 0 12px">Join the program that's helped dozens land their first QA jobs — without coding, degrees, or wasting €5K on fluff.</p>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;width:100%">
+          <button class="btn btn-primary" id="applyNowFooter" style="min-width:220px">Apply Now — Secure Your Spot</button>
+          <button class="btn btn-secondary" id="downloadBlueprintFooter" style="min-width:220px">Grab the Free QA Escape Blueprint</button>
+        </div>
+
+        <div class="muted-sm" style="margin-top:10px">Prefer a quick chat? <button class="btn btn-secondary" id="talkCoach" style="padding:8px 12px">Talk to a Coach (10 min)</button></div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;">
+        <div class="muted-sm">© Revolt Technology — QA Escape Plan™</div>
+        <div class="muted-sm">Privacy • Terms • Contact</div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JS -->
+  <script>
+    // Countdown to next Monday at 09:00 local time
+    (function countdown(){
+      const el = document.getElementById('countdown');
+      const dateEl = document.getElementById('cohortDate');
+
+      function nextMondayAt(hour=9,minute=0){
+        const now = new Date();
+        const day = now.getDay(); // 0 Sun ... 1 Mon
+        const daysUntilNextMon = (8 - day) % 7 || 7; // ensures next Monday
+        const target = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilNextMon, hour, minute, 0);
+        return target;
+      }
+
+      let target = nextMondayAt(9,0);
+      const opts = { weekday: 'short', month: 'short', day: 'numeric' };
+      dateEl.textContent = target.toLocaleDateString(undefined, opts);
+
+      function update(){
+        const now = new Date();
+        let diff = target - now;
+        if(diff <= 0) target = nextMondayAt(9,0), diff = target - now;
+        const d = Math.max(0, Math.floor(diff / (1000*60*60*24)));
+        const h = Math.max(0, Math.floor(diff / (1000*60*60) % 24));
+        const m = Math.max(0, Math.floor(diff / (1000*60) % 60));
+        const s = Math.max(0, Math.floor(diff / 1000 % 60));
+        el.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+      }
+      update(); setInterval(update, 1000);
+    })();
+
+    // FAQ accordion
+    (function faqToggle(){
+      const faq = document.getElementById('faq');
+      faq.querySelectorAll('.faq-item').forEach(item=>{
+        const body = item.querySelector('.faq-body');
+        item.addEventListener('click', (e)=>{
+          // ignore clicks on inner links/buttons
+          if(e.target.closest('button')) return;
+          const isOpen = item.classList.contains('open');
+          faq.querySelectorAll('.faq-item').forEach(i=>{
+            i.classList.remove('open');
+            const b = i.querySelector('.faq-body');
+            if(b) b.style.display = 'none';
+          });
+          if(!isOpen){
+            item.classList.add('open');
+            body.style.display = 'block';
+          }
+        });
+        if(item.dataset.open === 'true'){
+          item.classList.add('open');
+          const body = item.querySelector('.faq-body');
+          if(body) body.style.display = 'block';
+        }
+      });
+    })();
+
+    // CTA placeholders
+    function openFormFlow(mode){
+      const msg = {
+        apply: 'Apply: Please enter your email to start the application.',
+        buy: 'Enroll: You will be taken to payment / application flow.',
+        blueprint: 'Download: Enter your email to receive the free QA Escape Blueprint.',
+        coach: 'Book: Schedule a 10 minute chat with a coach.'
+      };
+      const res = prompt(msg[mode] + '\\nEnter your email:');
+      if(res) alert('Thanks — we\\'ll follow up at ' + res + '. (Demo placeholder.)');
+    }
+
+    document.getElementById('applyBtn').addEventListener('click', ()=>openFormFlow('apply'));
+    document.getElementById('blueprintBtn').addEventListener('click', ()=>openFormFlow('blueprint'));
+    document.getElementById('buyNow').addEventListener('click', ()=>openFormFlow('buy'));
+    document.getElementById('applyPayWhenHired').addEventListener('click', ()=>openFormFlow('apply'));
+    document.getElementById('applyNowFooter').addEventListener('click', ()=>openFormFlow('apply'));
+    document.getElementById('downloadBlueprintFooter').addEventListener('click', ()=>openFormFlow('blueprint'));
+    document.getElementById('talkCoach').addEventListener('click', ()=>openFormFlow('coach'));
+    document.getElementById('watchStories').addEventListener('click', ()=>alert('Video stories placeholder — wire up Vimeo/YouTube embed.'));
+    document.getElementById('seeOffers').addEventListener('click', ()=>alert('Gallery placeholder — replace with real offer letter images.'));
+
+    // Accessibility: show focus outline after keyboard navigation
+    (function focusStyle(){
+      document.addEventListener('keydown', e=>{
+        if(e.key === 'Tab') document.body.classList.add('show-focus');
+      });
+    })();
+  </script>
+</body>
+</html>

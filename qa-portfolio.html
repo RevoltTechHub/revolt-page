@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Services - Revolt Technology</title>
+    <!-- Favicon img -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!-- Bootstarp min css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Mean menu css -->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!-- All min css -->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!-- Swiper bundle min css -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!-- Magnigic popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- Animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- Nice select css -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- Style css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #396df0;
+            --secondary-color: #1b2857;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #777777;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(57, 109, 240, 0.03), rgba(27, 40, 87, 0.05));
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 30%;
+            height: 150%;
+            background: linear-gradient(-45deg, rgba(57, 109, 240, 0.02), rgba(27, 40, 87, 0.03));
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease-out 0.5s forwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(57, 109, 240, 0.1);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(57, 109, 240, 0.2);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .hero-badge i {
+            font-size: 1rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+            max-width: 90%;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 1.4s forwards;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .feature-item i {
+            color: var(--success-color);
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 1.6s forwards;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(57, 109, 240, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(57, 109, 240, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary-color);
+            padding: 16px 32px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-color);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            opacity: 0;
+            transform: scale(0.8) translateX(50px);
+            animation: scaleInRight 1.2s ease-out 0.8s forwards;
+        }
+
+        .visual-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(57, 109, 240, 0.1), rgba(27, 40, 87, 0.05));
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .visual-container::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .visual-container::after {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(-45deg, var(--accent-color), var(--warning-color));
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: pulse 2s ease-in-out infinite reverse;
+        }
+
+        .qa-illustration {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .qa-dashboard {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 90%;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 12px;
+        }
+
+        .dashboard-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            flex: 1;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--success-color);
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 12px;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .progress-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .progress-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: 3px;
+            margin: 0 12px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+            animation: fillProgress 2s ease-out;
+        }
+
+        .progress-fill.p-95 { width: 95%; }
+        .progress-fill.p-87 { width: 87%; }
+        .progress-fill.p-92 { width: 92%; }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            opacity: 0.6;
+            animation: floatIcon 8s linear infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-icon:nth-child(4) {
+            top: 40%;
+            right: 30%;
+            animation-delay: 6s;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleInRight {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes fillProgress {
+            from { width: 0; }
+        }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            25% { transform: translateY(-20px) rotate(90deg); opacity: 0.8; }
+            50% { transform: translateY(-10px) rotate(180deg); opacity: 0.4; }
+            75% { transform: translateY(-25px) rotate(270deg); opacity: 0.7; }
+            100% { transform: translateY(0px) rotate(360deg); opacity: 0.6; }
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 50px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(57, 109, 240, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(57, 109, 240, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            color: var(--primary-color);
+            display: inline-block;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-name {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .service-features {
+            text-align: left;
+        }
+
+        .service-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .portfolio-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-header {
+            /*background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));*/
+            color: var(--white);
+            padding-top: 10px;
+            padding-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .portfolio-header img {
+            width: 350px;
+            height: 250px;
+            border-radius: 15px;
+        }
+
+        .portfolio-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-title {
+            padding-top: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: black;
+        }
+
+        .portfolio-subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+            color: black;
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testing-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(57, 109, 240, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(57, 109, 240, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-container {
+                height: 400px;
+                padding: 30px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+
+            .service-title {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.success {
+            background: var(--success-color);
+            color: var(--white);
+        }
+
+        .message.error {
+            background: var(--warning-color);
+            color: var(--text-dark);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--light-gray);
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: var(--text-dark);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+    <body>
+        
+        <!-- Mouse cursor area start here -->
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
+        <!-- Mouse cursor area end here -->
+    
+        <!-- Header area start here -->
+        <header class="header-area">
+            <div class="container header__container">
+                <div class="header__main">
+                    <a href="index.html" class="logo">
+                        <!--<img src="https://res.cloudinary.com/ddlhom1zz/image/upload/v1731170655/Storebridger/webpages/wp6pvswjhnwxgmb5lyia.png" alt="logo">-->
+                        <img src="./assets/images/logo/Revolt-Logomark.png" alt="logo">
+                    </a>
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="testing-courses-page.html">Courses</a></li>
+                                <li><a href="payment.html">Pricing</a></li>
+                                <!--<li><a href="index.html#testimonial-section">Testimonials</a></li>-->
+                                <!--<li><a href="index.html#faq-section">FAQ</a></li>-->
+                                <!--<li class="ml-20 d-none d-lg-block"><a class="search-trigger" href="#0"><svg width="17"-->
+                                <!--                                                                             height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+                                <!--            <g clip-path="url(#clip0_307_344)">-->
+                                <!--                <path-->
+                                <!--                    d="M16.0375 14.9381L12.0784 11.0334C13.0625 9.86621 13.6554 8.36744 13.6554 6.73438C13.6554 3.02103 10.5925 0 6.82774 0C3.0629 0 0 3.02103 0 6.73438C0 10.4475 3.0629 13.4683 6.82774 13.4683C8.4834 13.4683 10.0031 12.8836 11.1865 11.913L15.1456 15.8178C15.2687 15.9393 15.4301 16 15.5915 16C15.7529 16 15.9143 15.9393 16.0375 15.8178C16.2839 15.5748 16.2839 15.181 16.0375 14.9381ZM1.26142 6.73438C1.26142 3.70705 3.75845 1.24414 6.82774 1.24414C9.89695 1.24414 12.3939 3.70705 12.3939 6.73438C12.3939 9.76146 9.89695 12.2241 6.82774 12.2241C3.75845 12.2241 1.26142 9.76146 1.26142 6.73438Z"-->
+                                <!--                    fill="#0F0D1D" />-->
+                                <!--            </g>-->
+                                <!--            <defs>-->
+                                <!--                <clipPath id="clip0_307_344">-->
+                                <!--                    <rect width="16.2222" height="16" fill="white" />-->
+                                <!--                </clipPath>-->
+                                <!--            </defs>-->
+                                <!--        </svg>-->
+                                <!--    </a></li>-->
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="d-none d-lg-inline-block">
+                        <a href="#packages-section" class="btn-one">Get Started <i
+                                class="fa-regular fa-arrow-right-long"></i></a>
+                    </div>
+                    <div class="bars d-block d-lg-none">
+                        <i id="openButton" class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header area end here -->
+        
+        
+        <!-- Sidebar area start here -->
+        <div id="targetElement" class="sidebar-area sidebar__hide">
+            <div class="sidebar__overlay"></div>
+            <a href="index.html" class="logo mb-40">
+                <img src="./assets/images/logo/Revolt-Logomark.png" alt="logo">
+            </a>
+            <!-- <div class="sidebar__search mb-30">
+                <input type="text" placeholder="Search...">
+                <i class="fa-regular fa-magnifying-glass"></i>
+            </div> -->
+            <div class="mobile-menu overflow-hidden"></div>
+            <ul class="info pt-40">
+                <li><i class="fa-solid primary-color fa-location-dot"></i> <a href="#0">20, Wenlock Road, London, UK</a>
+                </li>
+                <li class="py-2"><i class="fa-solid primary-color fa-phone-volume"></i> <a
+                        href="tel:+44 7438 240031">+44 7438 240031</a>
+                </li>
+                <li><i class="fa-solid primary-color fa-paper-plane"></i> <a href="#0">admin@revolttechhub.com</a></li>
+            </ul>
+            <div class="social-icon mt-20">
+                <a href="#0"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#0"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#0"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#0"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <button id="closeButton" class="text-white"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <!-- Sidebar area end here -->
+
+    <main>
+        <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        Quality Assurance Excellence
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Elevate Your Software Quality Standards
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Comprehensive QA testing services that ensure your applications meet the highest quality standards. From manual testing to automated solutions, we've got your quality assurance covered.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>99.9% Bug Detection Rate</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Faster Time to Market</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure & Compliant</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="scrollToSection('contact')">
+                            <i class="fas fa-play"></i> Get Started
+                        </button>
+                        <button class="btn-secondary" onclick="scrollToSection('portfolio')">
+                            <i class="fas fa-eye"></i> View Portfolio
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="visual-container">
+                        <div class="qa-illustration">
+                            <div class="qa-dashboard">
+                                <div class="dashboard-header">
+                                    <div class="dashboard-title">QA Dashboard</div>
+                                    <div class="status-indicator"></div>
+                                </div>
+                                
+                                <div class="metrics-grid">
+                                    <div class="metric-card">
+                                        <span class="metric-value">2.5K</span>
+                                        <span class="metric-label">Tests Run</span>
+                                    </div>
+                                    <div class="metric-card">
+                                        <span class="metric-value">95%</span>
+                                        <span class="metric-label">Pass Rate</span>
+                                    </div>
+                                    <div class="metric-card">
+                                        <span class="metric-value">47</span>
+                                        <span class="metric-label">Bugs Fixed</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-bars">
+                                    <div class="progress-item">
+                                        <span>Security Tests</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill p-95"></div>
+                                        </div>
+                                        <span>95%</span>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span>Performance</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill p-87"></div>
+                                        </div>
+                                        <span>87%</span>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span>Functionality</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill p-92"></div>
+                                        </div>
+                                        <span>92%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-icons">
+                            <div class="floating-icon"><i class="fas fa-bug"></i></div>
+                            <div class="floating-icon"><i class="fas fa-cog"></i></div>
+                            <div class="floating-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="floating-icon"><i class="fas fa-chart-line"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our QA Services</h2>
+            <p class="section-subtitle">Comprehensive testing solutions tailored to your specific needs and industry requirements.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-name">Manual Testing</h3>
+                    <p class="service-description">Comprehensive manual testing by experienced QA professionals to ensure your application functions flawlessly across all scenarios.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Functional Testing</li>
+                            <li>Usability Testing</li>
+                            <li>Exploratory Testing</li>
+                            <li>User Acceptance Testing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-name">Automation Testing</h3>
+                    <p class="service-description">Advanced automated testing frameworks that accelerate your testing process while maintaining the highest quality standards.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Selenium WebDriver</li>
+                            <li>API Testing</li>
+                            <li>Regression Testing</li>
+                            <li>CI/CD Integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-name">Performance Testing</h3>
+                    <p class="service-description">Ensure your application performs optimally under various load conditions and delivers exceptional user experience.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Load Testing</li>
+                            <li>Stress Testing</li>
+                            <li>Volume Testing</li>
+                            <li>Performance Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3 class="service-name">Security Testing</h3>
+                    <p class="service-description">Comprehensive security assessments to protect your application from vulnerabilities and ensure data integrity.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Penetration Testing</li>
+                            <li>Vulnerability Assessment</li>
+                            <li>Data Protection Testing</li>
+                            <li>Compliance Verification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-name">Mobile Testing</h3>
+                    <p class="service-description">Specialized testing for mobile applications across different devices, platforms, and network conditions.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Cross-platform Testing</li>
+                            <li>Device Compatibility</li>
+                            <li>Network Testing</li>
+                            <li>App Store Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3 class="service-name">API Testing</h3>
+                    <p class="service-description">Thorough API testing to ensure seamless integration and reliable data exchange between systems.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>REST API Testing</li>
+                            <li>GraphQL Testing</li>
+                            <li>Data Validation</li>
+                            <li>Integration Testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="container">
+
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="section">
+                <h2 class="section-title">QA Portfolio</h2>
+                <p class="section-subtitle">Explore our recent quality assurance projects and the impact of our comprehensive testing approach.</p>
+                
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <div class="portfolio-header">
+                            <img src="assets/images/service/new.avif">
+                            <!--<div class="portfolio-icon">🏦</div>-->
+                            <h3 class="portfolio-title">Banking Platform QA</h3>
+                            <p class="portfolio-subtitle">Financial Services Testing</p>
+                        </div>
+                        <div class="portfolio-content">
+                            <p class="portfolio-description">Comprehensive QA testing for a major banking platform including security, performance, and compliance testing.</p>
+                            <div class="testing-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">2,500+</div>
+                                    <div class="metric-label">Test Cases</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">95%</div>
+                                    <div class="metric-label">Bug Detection</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">0</div>
+                                    <div class="metric-label">Security Issues</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">6 Months</div>
+                                    <div class="metric-label">Project Duration</div>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Selenium</span>
+                                <span class="tech-tag">JMeter</span>
+                                <span class="tech-tag">Postman</span>
+                                <span class="tech-tag">OWASP ZAP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card">
+                        <div class="portfolio-header">
+                            <img src="assets/images/service/freepik_assistant_1754231022075.png">
+                            <!--<div class="portfolio-icon">🛒</div>-->
+                            <h3 class="portfolio-title">E-commerce Platform</h3>
+                            <p class="portfolio-subtitle">Multi-vendor Marketplace Testing</p>
+                        </div>
+                        <div class="portfolio-content">
+                            <p class="portfolio-description">End-to-end testing of a large-scale e-commerce platform with focus on user experience and performance optimization.</p>
+                            <div class="testing-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">1,800+</div>
+                                    <div class="metric-label">Test Cases</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">500+</div>
+                                    <div class="metric-label">Devices Tested</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">40%</div>
+                                    <div class="metric-label">Performance Improvement</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">4 Months</div>
+                                    <div class="metric-label">Project Duration</div>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Cypress</span>
+                                <span class="tech-tag">Playwright</span>
+                                <span class="tech-tag">BrowserStack</span>
+                                <span class="tech-tag">LoadRunner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card">
+                        <div class="portfolio-header">
+                            <img src="assets/images/service/8485534_3925266.jpg">
+                            <!--<div class="portfolio-icon">🏥</div>-->
+                            <h3 class="portfolio-title">Healthcare Management</h3>
+                            <p class="portfolio-subtitle">HIPAA Compliance Testing</p>
+                        </div>
+                        <div class="portfolio-content">
+                            <p class="portfolio-description">Specialized QA testing for healthcare management system with emphasis on compliance and data security.</p>
+                            <div class="testing-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">3,200+</div>
+                                    <div class="metric-label">Test Cases</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">100%</div>
+                                    <div class="metric-label">HIPAA Compliance</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">99.9%</div>
+                                    <div class="metric-label">Uptime Achieved</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">8 Months</div>
+                                    <div class="metric-label">Project Duration</div>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">TestComplete</span>
+                                <span class="tech-tag">SoapUI</span>
+                                <span class="tech-tag">Burp Suite</span>
+                                <span class="tech-tag">K6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card">
+                        <div class="portfolio-header">
+                            <img src="assets/images/service/9068751_4088717.jpg">
+                            <!--<div class="portfolio-icon">📱</div>-->
+                            <h3 class="portfolio-title">Mobile Banking App</h3>
+                            <p class="portfolio-subtitle">Cross-platform Mobile Testing</p>
+                        </div>
+                        <div class="portfolio-content">
+                            <p class="portfolio-description">Comprehensive mobile testing across iOS and Android platforms with focus on security and user experience.</p>
+                            <div class="testing-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">1,500+</div>
+                                    <div class="metric-label">Test Cases</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">200+</div>
+                                    <div class="metric-label">Devices Tested</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">4.8/5</div>
+                                    <div class="metric-label">App Store Rating</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">5 Months</div>
+                                    <div class="metric-label">Project Duration</div>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Appium</span>
+                                <span class="tech-tag">Espresso</span>
+                                <span class="tech-tag">XCUITest</span>
+                                <span class="tech-tag">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Projects Tested</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label">Bugs Found</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">QA Specialists</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2 class="section-title">Get QA Quote</h2>
+                <p class="section-subtitle">Ready to ensure your software meets the highest quality standards? Let's discuss your QA requirements and create a comprehensive testing strategy.</p>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="message" id="message"></div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company/Organization *</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="app-type">Application Type *</label>
+                        <select id="app-type" name="app-type" required>
+                            <option value="">Select Application Type</option>
+                            <option value="web-application">Web Application</option>
+                            <option value="mobile-app">Mobile Application</option>
+                            <option value="desktop-app">Desktop Application</option>
+                            <option value="api-microservices">API/Microservices</option>
+                            <option value="enterprise-software">Enterprise Software</option>
+                            <option value="e-commerce">E-commerce Platform</option>
+                            <option value="saas-platform">SaaS Platform</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>QA Services Required *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="manual-testing" name="qa-services" value="manual-testing">
+                                <label for="manual-testing">Manual Testing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="automation-testing" name="qa-services" value="automation-testing">
+                                <label for="automation-testing">Automation Testing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="performance-testing" name="qa-services" value="performance-testing">
+                                <label for="performance-testing">Performance Testing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="security-testing" name="qa-services" value="security-testing">
+                                <label for="security-testing">Security Testing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="mobile-testing" name="qa-services" value="mobile-testing">
+                                <label for="mobile-testing">Mobile Testing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="api-testing" name="qa-services" value="api-testing">
+                                <label for="api-testing">API Testing</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="testing-phase">Testing Phase *</label>
+                            <select id="testing-phase" name="testing-phase" required>
+                                <option value="">Select Testing Phase</option>
+                                <option value="development">During Development</option>
+                                <option value="pre-launch">Pre-Launch Testing</option>
+                                <option value="post-launch">Post-Launch Testing</option>
+                                <option value="ongoing">Ongoing QA Support</option>
+                                <option value="audit">QA Audit/Assessment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="urgency">Project Urgency</label>
+                            <select id="urgency" name="urgency">
+                                <option value="">Select Urgency</option>
+                                <option value="low">Low - Planning Phase</option>
+                                <option value="medium">Medium - 2-4 Weeks</option>
+                                <option value="high">High - 1-2 Weeks</option>
+                                <option value="urgent">Urgent - ASAP</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select Budget Range</option>
+                                <option value="5k-15k">$5,000 - $15,000</option>
+                                <option value="15k-30k">$15,000 - $30,000</option>
+                                <option value="30k-50k">$30,000 - $50,000</option>
+                                <option value="50k-100k">$50,000 - $100,000</option>
+                                <option value="100k+">$100,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="timeline">Expected Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Select Timeline</option>
+                                <option value="1-2weeks">1-2 Weeks</option>
+                                <option value="2-4weeks">2-4 Weeks</option>
+                                <option value="1-3months">1-3 Months</option>
+                                <option value="3-6months">3-6 Months</option>
+                                <option value="ongoing">Ongoing Support</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="current-tools">Current Testing Tools/Frameworks</label>
+                        <input type="text" id="current-tools" name="current-tools" placeholder="e.g., Selenium, Jest, Cypress, Manual testing only, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="platforms">Target Platforms</label>
+                        <input type="text" id="platforms" name="platforms" placeholder="e.g., Web browsers, iOS, Android, Windows, macOS, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-details">Project Details & Requirements *</label>
+                        <textarea id="project-details" name="project-details" placeholder="Please describe your application, current challenges, specific QA requirements, compliance needs, and any other relevant details..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additional-info">Additional Information</label>
+                        <textarea id="additional-info" name="additional-info" placeholder="Any specific concerns, previous testing issues, or special requirements?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Request QA Quote</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+        <div id="footer"></div>
+    
+        <script>
+            fetch('layout/Footer.html')
+                .then(response => response.text())
+                .then(data => document.getElementById('footer').innerHTML = data);
+        </script>
+        
+        <!-- Back to top area start here -->
+        <div class="scroll-up">
+            <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+        <!-- Back to top area end here -->
+    
+        <!-- Jquery 3.7.0 Min Js -->
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <!-- Bootstrap min Js -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- Mean menu Js -->
+        <script src="assets/js/meanmenu.js"></script>
+        <!-- Swiper bundle min Js -->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <!-- Counterup min Js -->
+        <script src="assets/js/jquery.counterup.min.js"></script>
+        <!-- Wow min Js -->
+        <script src="assets/js/wow.min.js"></script>
+        <!-- Pace min Js -->
+        <script src="assets/js/pace.min.js"></script>
+        <!-- Magnific popup min Js -->
+        <script src="assets/js/magnific-popup.min.js"></script>
+        <!-- Nice select min Js -->
+        <script src="assets/js/nice-select.min.js"></script>
+        <!-- Isotope pkgd min Js -->
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <!-- Waypoints Js -->
+        <script src="assets/js/jquery.waypoints.js"></script>
+        <!-- Script Js -->
+        <script src="assets/js/script.js"></script>
+        
+        
+        <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add scroll-triggered animations for service cards
+        function animateOnScroll() {
+            const cards = document.querySelectorAll('.service-card, .portfolio-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+        }
+
+        // Add hover effects to portfolio cards
+        function addPortfolioHoverEffects() {
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            portfolioCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Add interactive effects to service cards
+        function addServiceHoverEffects() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.service-icon');
+                    icon.style.transform = 'scale(1.2) rotate(5deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.service-icon');
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+        }
+
+        // Animate counter numbers in hero dashboard
+        function animateCounters() {
+            const counters = document.querySelectorAll('.metric-value');
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const isPercentage = target.includes('%');
+                const isK = target.includes('K');
+                let numericValue = parseFloat(target.replace(/[^\d.]/g, ''));
+                
+                if (isK) numericValue *= 1000;
+                
+                let current = 0;
+                const increment = numericValue / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericValue) {
+                        current = numericValue;
+                        clearInterval(timer);
+                    }
+                    
+                    let displayValue = Math.floor(current);
+                    if (isK && numericValue >= 1000) {
+                        displayValue = (current / 1000).toFixed(1) + 'K';
+                    } else if (isPercentage) {
+                        displayValue = Math.floor(current) + '%';
+                    }
+                    
+                    counter.textContent = displayValue;
+                }, 50);
+            });
+        }
+
+        // Initialize all effects when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            addPortfolioHoverEffects();
+            addServiceHoverEffects();
+            
+            // Start counter animation after hero animation completes
+            setTimeout(animateCounters, 2000);
+        });
+
+        // Add parallax effect to hero background elements
+        // window.addEventListener('scroll', function() {
+        //     const scrolled = window.pageYOffset;
+        //     const hero = document.querySelector('.hero');
+        //     const heroHeight = hero.offsetHeight;
+            
+        //     if (scrolled < heroHeight) {
+        //         const rate = scrolled * -0.5;
+        //         hero.style.transform = `translateY(${rate}px)`;
+        //     }
+        // });
+    </script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('message');
+            const formData = new FormData(this);
+            
+            // Get selected QA services
+            const selectedServices = [];
+            const checkboxes = document.querySelectorAll('input[name="qa-services"]:checked');
+            checkboxes.forEach(checkbox => {
+                selectedServices.push(checkbox.value);
+            });
+            
+            // Simple validation
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const company = formData.get('company');
+            const appType = formData.get('app-type');
+            const testingPhase = formData.get('testing-phase');
+            const projectDetails = formData.get('project-details');
+            
+            if (!name || !email || !company || !appType || !testingPhase || !projectDetails) {
+                showMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            if (selectedServices.length === 0) {
+                showMessage('Please select at least one QA service.', 'error');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.textContent = 'Sending Request...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                showMessage('Thank you for your QA inquiry! Our testing experts will review your requirements and get back to you within 24 hours with a detailed quote.', 'success');
+                this.reset();
+                submitBtn.textContent = 'Request QA Quote';
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 8000);
+        }
+
+        // Add interactive effects to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add interactive effects to portfolio cards
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animate stats on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent;
+                        const isPercentage = finalValue.includes('%');
+                        const numericValue = parseFloat(finalValue.replace(/[^\d.]/g, ''));
+                        
+                        let current = 0;
+                        const increment = numericValue / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= numericValue) {
+                                current = numericValue;
+                                clearInterval(timer);
+                            }
+                            
+                            if (isPercentage) {
+                                target.textContent = current.toFixed(1) + '%';
+                            } else if (numericValue >= 1000) {
+                                target.textContent = Math.floor(current).toLocaleString() + '+';
+                            } else {
+                                target.textContent = Math.floor(current);
+                            }
+                        }, 20);
+                        
+                        observer.unobserve(target);
+                    }
+                });
+            });
+            
+            stats.forEach(stat => observer.observe(stat));
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', animateStats);
+    </script>
+</body>
+</html>
+                

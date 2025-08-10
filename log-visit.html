@@ -1,0 +1,25 @@
+<!-- public/log-visit.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log Visit</title>
+</head>
+<body>
+  <h1>Log My Visit</h1>
+  <button onclick="logVisit()">Log IP</button>
+
+  <script>
+    function logVisit() {
+      fetch('/revolt/public/log-visit', {
+        method: 'POST'
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("IP Info:", data);
+        alert("Logged: " + JSON.stringify(data));
+      })
+      .catch(err => console.error("Error:", err));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Testing Academy - Professional Testing Courses</title>
+    <!-- Favicon img -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <!-- Bootstarp min css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Mean menu css -->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!-- All min css -->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!-- Swiper bundle min css -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!-- Magnigic popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- Animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- Nice select css -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- Style css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #396df0;
+            --secondary-color: #1b2857;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #777777;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            color: white !important;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0f1a3d;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(57, 109, 240, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1.2s ease-out 0.3s forwards;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(57, 109, 240, 0.2);
+        }
+        
+        .hero-badge::before {
+            content: '🎯';
+            margin-right: 0.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+        
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(57, 109, 240, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(57, 109, 240, 0.4);
+            color: white;
+        }
+        
+        .hero-btn::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-btn:hover::after {
+            transform: translateX(4px);
+        }
+        
+        .watch-demo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .play-circle {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .play-circle::before {
+            content: '▶️';
+            font-size: 1rem;
+            margin-left: 2px;
+        }
+        
+        .watch-demo:hover .play-circle {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .stat-item {
+            text-align: left;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+        
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            transform: translateX(50px) scale(0.9);
+            animation: slideInRight 1.2s ease-out 0.6s forwards;
+        }
+        
+        .hero-image-container {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 20px;
+        }
+        
+        .hero-mockup {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .mockup-header {
+            width: 100%;
+            height: 100%;
+            background: #f1f5f9;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .mockup-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .mockup-content {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .mockup-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .mockup-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .mockup-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            animation: floatCard 6s ease-in-out infinite;
+            z-index: 10;
+        }
+        
+        .card-1 {
+            top: 15%;
+            right: -2%;
+            animation-delay: 0s;
+        }
+        
+        .card-2 {
+            bottom: 15%;
+            left: -2%;
+            animation-delay: 3s;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        /* Animations */
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Video Modal Styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .video-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-container-modal {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: scaleIn 0.3s ease-out;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .close-video {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        
+        .close-video:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        @keyframes scaleOut {
+            from { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            to { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+        /* Course Selection Modal Styles */
+        .course-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-out;
+            padding: 1rem;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        
+        .course-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .course-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            max-height: 90vh;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: scaleIn 0.3s ease-out;
+            text-align: center;
+            overflow-y: auto;
+            margin: auto;
+        }
+        
+        .close-course-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-course-modal:hover {
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+        
+        .course-modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        
+        .course-modal-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        .course-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .course-option {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: auto;
+            min-height: 280px;
+        }
+        
+        .course-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(57, 109, 240, 0.2);
+            background: white;
+        }
+        
+        .course-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .course-option:hover .course-icon {
+            transform: scale(1.05);
+        }
+        
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.6rem;
+        }
+        
+        .course-description {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+        
+        .course-features {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .course-features li {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        
+        .course-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        .or-divider {
+            position: relative;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .or-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--light-gray);
+            z-index: 1;
+        }
+        
+        .or-divider span {
+            background: white;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-option {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(57, 109, 240, 0.3);
+            font-size: 0.95rem;
+        }
+        
+        .contact-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(57, 109, 240, 0.4);
+            color: white;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+                padding: 0 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .hero-image-container {
+                margin: 2rem 0;
+            }
+            
+            /* Course Modal Mobile Styles */
+            .course-modal {
+                padding: 0.5rem;
+                align-items: flex-start;
+                padding-top: 2rem;
+            }
+            
+            .course-modal-content {
+                width: 100%;
+                max-width: 100%;
+                padding: 1.5rem;
+                margin: 0;
+                max-height: calc(100vh - 4rem);
+                border-radius: 16px;
+            }
+            
+            .course-modal-title {
+                font-size: 1.5rem;
+                margin-bottom: 0.6rem;
+            }
+            
+            .course-modal-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .course-options {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .course-option {
+                padding: 1.2rem 0.8rem;
+                min-height: 220px;
+            }
+            
+            .course-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .course-title {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .course-description {
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .course-features li {
+                font-size: 0.7rem;
+                margin-bottom: 0.3rem;
+                padding-left: 1rem;
+            }
+            
+            .contact-option {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.85rem;
+                gap: 0.5rem;
+            }
+            
+            .contact-icon {
+                font-size: 1rem;
+            }
+            
+            .or-divider {
+                margin: 1rem 0;
+                font-size: 0.8rem;
+            }
+        }
+        
+        .badge {
+            background-color: rgba(255,255,255,0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Demo Video Section */
+        .demo-video {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .video-container {
+            position: relative;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+            padding-top: 56.25%;
+        }
+        
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+        }
+        
+        .play-button {
+            width: 100px;
+            height: 100px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .play-icon {
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+        
+        /* Course Cards */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .course-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .course-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+        
+        .course-icon-img {
+            width: 100%;
+            height: 300px;
+            /*background-color: rgba(255,255,255,0.2);*/
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+        
+        .course-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-duration {
+            background-color: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        
+        .course-content {
+            padding: 2rem;
+        }
+        
+        .course-modules {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .module-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 1rem;
+        }
+        
+        .module-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .module-title {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .module-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .module-topics {
+            list-style: none;
+            margin-left: 2rem;
+        }
+        
+        .module-topics li {
+            margin-bottom: 0.3rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .module-topics li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .course-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+        
+        .feature {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .feature-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .feature-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        
+        /* Coaching Section */
+        .coaching-section {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e8f2ff 100%);
+        }
+        
+        .coaching-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .coaching-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coaching-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .coaching-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: var(--white);
+        }
+        
+        .coaching-benefits {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+        
+        .coaching-benefits li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .coaching-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        .bonuses-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bonuses-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(57, 109, 240, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .bonuses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bonus-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(57, 109, 240, 0.1);
+        }
+        
+        .bonus-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .bonus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .bonus-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(57, 109, 240, 0.3);
+        }
+        
+        .bonus-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .bonus-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .bonus-value {
+            background: linear-gradient(135deg, var(--success-color), #20c997);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+        }
+        
+        /* Instructors Section */
+        .instructors-section {
+            background-color: var(--white);
+            position: relative;
+        }
+        
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+        
+        .instructor-card {
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .instructor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        
+        .instructor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .instructor-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(57, 109, 240, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .instructor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .instructor-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructor-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .instructor-bio {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .instructor-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .instructor-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+        
+        .specialty-tag {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .bonuses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .instructors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .instructor-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background-color: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light-gray);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background-color: var(--white);
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-dark);
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            /*.hero h1 {*/
+            /*    font-size: 2.2rem;*/
+            /*}*/
+            
+            /*.hero-badges {*/
+            /*    flex-direction: column;*/
+            /*    gap: 1rem;*/
+            /*}*/
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .coaching-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .course-header {
+                padding: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader area start -->
+<!--<div class="loading">-->
+<!--    <span class="text-capitalize">L</span>-->
+<!--    <span>o</span>-->
+<!--    <span>a</span>-->
+<!--    <span>d</span>-->
+<!--    <span>i</span>-->
+<!--    <span>n</span>-->
+<!--    <span>g</span>-->
+<!--</div>-->
+<!--<div id="preloader">-->
+<!--</div>-->
+<!-- Preloader area end -->
+
+<!-- Mouse cursor area start here -->
+<div class="mouse-cursor cursor-outer"></div>
+<div class="mouse-cursor cursor-inner"></div>
+<!-- Mouse cursor area end here -->
+
+<!-- Top header area start here -->
+<!--<div class="header-top d-none d-lg-block">-->
+<!--    <div class="container header__container">-->
+<!--        <div class="header-top-wrp">-->
+<!--            <ul class="info">-->
+<!--                <li><svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                        <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                              d="M13.8748 8.50453C13.8748 9.85566 12.7757 10.953 11.4263 10.953H3.39325C2.04384 10.953 0.94475 9.85563 0.94475 8.50453V3.39322C0.944449 2.95776 1.06111 2.53021 1.28253 2.15525L5.20216 6.07488C5.78856 6.663 6.57384 6.98706 7.41059 6.98706C8.24563 6.98706 9.03091 6.663 9.61731 6.07488L13.5369 2.15525C13.7584 2.5302 13.875 2.95776 13.8747 3.39322V8.50453H13.8748ZM11.4263 0.94475H3.39325C2.836 0.94475 2.32159 1.13334 1.91009 1.44712L5.86916 5.40791C6.27897 5.81597 6.82591 6.04231 7.41059 6.04231C7.99356 6.04231 8.54053 5.81597 8.95031 5.40791L12.9094 1.44712C12.4979 1.13334 11.9835 0.94475 11.4263 0.94475ZM11.4263 0H3.39325C1.52259 0 0 1.52259 0 3.39325V8.50456C0 10.3769 1.52259 11.8978 3.39325 11.8978H11.4263C13.2969 11.8978 14.8195 10.3769 14.8195 8.50456V3.39322C14.8195 1.52256 13.2969 0 11.4263 0Z"-->
+<!--                              fill="white" />-->
+<!--                    </svg>-->
+<!--                    <a href="mailto:admin@revoltqa.com" class="ms-1">admin@revoltqa.com</a>-->
+<!--                </li>-->
+<!--                <li class="ms-4"><svg width="16" height="15" viewBox="0 0 16 15" fill="none"-->
+<!--                                      xmlns="http://www.w3.org/2000/svg">-->
+<!--                        <g clip-path="url(#clip0_529_224)">-->
+<!--                            <path-->
+<!--                                d="M14.8984 10.5909C14.8735 10.5703 12.0629 8.57063 11.304 8.69297C10.9379 8.75766 10.7288 9.0075 10.3093 9.50719C10.1933 9.6463 10.0747 9.7832 9.95352 9.91781C9.68836 9.83143 9.42973 9.72616 9.17961 9.60281C7.88845 8.97422 6.84524 7.93101 6.21665 6.63984C6.0933 6.38973 5.98803 6.1311 5.90165 5.86594C6.03946 5.73984 6.23258 5.57719 6.31508 5.50781C6.81243 5.09062 7.0618 4.88109 7.12649 4.51453C7.25915 3.75562 5.24915 0.945937 5.22852 0.920625C5.13698 0.790808 5.01777 0.682933 4.87948 0.604789C4.74118 0.526645 4.58726 0.480181 4.42883 0.46875C3.61415 0.46875 1.28821 3.48563 1.28821 3.99422C1.28821 4.02375 1.33086 7.02562 5.03258 10.7911C8.79383 14.4886 11.7957 14.5312 11.8252 14.5312C12.3334 14.5312 15.3507 12.2053 15.3507 11.3906C15.3392 11.2322 15.2926 11.0783 15.2144 10.94C15.1362 10.8017 15.0282 10.6825 14.8984 10.5909ZM11.7732 13.5909C11.3663 13.5562 8.84446 13.2239 5.69446 10.1297C2.58524 6.96422 2.26133 4.43813 2.22899 4.04672C2.84342 3.08233 3.58545 2.20548 4.43493 1.44C4.45368 1.45875 4.47852 1.48688 4.5104 1.52344C5.16188 2.41276 5.72309 3.36481 6.18571 4.36547C6.03527 4.51682 5.87626 4.65939 5.70946 4.7925C5.4508 4.98959 5.21328 5.21297 5.00071 5.45906C4.96474 5.50953 4.93914 5.56663 4.92538 5.62705C4.91162 5.68748 4.90998 5.75003 4.92055 5.81109C5.01975 6.24081 5.17169 6.65662 5.3729 7.04906C6.09378 8.52939 7.28997 9.72541 8.7704 10.4461C9.16276 10.6476 9.57859 10.7997 10.0084 10.8989C10.0694 10.9097 10.132 10.9082 10.1925 10.8944C10.2529 10.8807 10.31 10.8549 10.3604 10.8188C10.6074 10.6053 10.8315 10.3669 11.0293 10.1072C11.1765 9.93188 11.3729 9.69797 11.4474 9.63188C12.4506 10.094 13.4048 10.6559 14.2956 11.3091C14.3345 11.3419 14.3621 11.3672 14.3804 11.3836C13.6149 12.2333 12.7379 12.9755 11.7732 13.59V13.5909ZM11.6007 7.03125H12.5382C12.5371 6.03703 12.1416 5.08385 11.4386 4.38083C10.7356 3.67781 9.78243 3.28237 8.78821 3.28125V4.21875C9.5339 4.21949 10.2488 4.51605 10.7761 5.04333C11.3034 5.57062 11.6 6.28556 11.6007 7.03125Z"-->
+<!--                                fill="white" />-->
+<!--                            <path-->
+<!--                                d="M13.9445 7.03125H14.882C14.8801 5.41566 14.2375 3.86677 13.0951 2.72437C11.9527 1.58198 10.4038 0.939361 8.78821 0.9375V1.875C10.1552 1.87661 11.4658 2.42038 12.4324 3.38701C13.3991 4.35365 13.9428 5.66422 13.9445 7.03125Z"-->
+<!--                                fill="white" />-->
+<!--                        </g>-->
+<!--                        <defs>-->
+<!--                            <clipPath>-->
+<!--                                <rect width="15" height="15" fill="white" transform="translate(0.819458)" />-->
+<!--                            </clipPath>-->
+<!--                        </defs>-->
+<!--                    </svg>-->
+
+<!--                    <a href="tel:+44 7438 240031" class="ms-1">+44 7438 240031</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <ul class="link-info">-->
+<!--                <li><a href="https://x.com/revoltteknology" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>-->
+<!--                <li><a href="https://instagram.com/revolt_technology" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- Top header area end here -->
+
+<!-- Header area start here -->
+<header class="header-area">
+    <div class="container header__container">
+        <div class="header__main">
+            <a href="index.html" class="logo">
+                <!--<img src="https://res.cloudinary.com/ddlhom1zz/image/upload/v1731170655/Storebridger/webpages/wp6pvswjhnwxgmb5lyia.png" alt="logo">-->
+                    <img src="./assets/images/logo/Revolt-Logomark.png" alt="logo">
+
+            </a>
+            <div class="main-menu">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testing-courses-page.html">Courses</a></li>
+                        <li><a href="payment.html">Pricing</a></li>
+                        <!--<li><a href="index.html#testimonial-section">Testimonials</a></li>-->
+                        <!--<li><a href="index.html#faq-section">FAQ</a></li>-->
+                        <!--<li class="ml-20 d-none d-lg-block"><a class="search-trigger" href="#0"><svg width="17"-->
+                        <!--                                                                             height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+                        <!--            <g clip-path="url(#clip0_307_344)">-->
+                        <!--                <path-->
+                        <!--                    d="M16.0375 14.9381L12.0784 11.0334C13.0625 9.86621 13.6554 8.36744 13.6554 6.73438C13.6554 3.02103 10.5925 0 6.82774 0C3.0629 0 0 3.02103 0 6.73438C0 10.4475 3.0629 13.4683 6.82774 13.4683C8.4834 13.4683 10.0031 12.8836 11.1865 11.913L15.1456 15.8178C15.2687 15.9393 15.4301 16 15.5915 16C15.7529 16 15.9143 15.9393 16.0375 15.8178C16.2839 15.5748 16.2839 15.181 16.0375 14.9381ZM1.26142 6.73438C1.26142 3.70705 3.75845 1.24414 6.82774 1.24414C9.89695 1.24414 12.3939 3.70705 12.3939 6.73438C12.3939 9.76146 9.89695 12.2241 6.82774 12.2241C3.75845 12.2241 1.26142 9.76146 1.26142 6.73438Z"-->
+                        <!--                    fill="#0F0D1D" />-->
+                        <!--            </g>-->
+                        <!--            <defs>-->
+                        <!--                <clipPath id="clip0_307_344">-->
+                        <!--                    <rect width="16.2222" height="16" fill="white" />-->
+                        <!--                </clipPath>-->
+                        <!--            </defs>-->
+                        <!--        </svg>-->
+                        <!--    </a></li>-->
+                    </ul>
+                </nav>
+            </div>
+            <div class="d-none d-lg-inline-block">
+                <a href="#packages-section" class="btn-one">Get Started <i
+                        class="fa-regular fa-arrow-right-long"></i></a>
+            </div>
+            <div class="bars d-block d-lg-none">
+                <i id="openButton" class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header area end here -->
+
+
+<!-- Sidebar area start here -->
+<div id="targetElement" class="sidebar-area sidebar__hide">
+    <div class="sidebar__overlay"></div>
+    <a href="index.html" class="logo mb-40">
+        <img src="https://res.cloudinary.com/ddlhom1zz/image/upload/v1731170655/Storebridger/webpages/wp6pvswjhnwxgmb5lyia.png" alt="logo">
+    </a>
+    <!-- <div class="sidebar__search mb-30">
+        <input type="text" placeholder="Search...">
+        <i class="fa-regular fa-magnifying-glass"></i>
+    </div> -->
+    <div class="mobile-menu overflow-hidden"></div>
+    <ul class="info pt-40">
+        <li><i class="fa-solid primary-color fa-location-dot"></i> <a href="#0">20, Wenlock Road, London, UK</a>
+        </li>
+        <li class="py-2"><i class="fa-solid primary-color fa-phone-volume"></i> <a
+                href="tel:+44 7438 240031">+44 7438 240031</a>
+        </li>
+        <li><i class="fa-solid primary-color fa-paper-plane"></i> <a href="#0">admin@revolttechhub.com</a></li>
+    </ul>
+    <div class="social-icon mt-20">
+        <a href="#0"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#0"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#0"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#0"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <button id="closeButton" class="text-white"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<!-- Sidebar area end here -->
+
+<!-- Fullscreen search area start here -->
+<div class="search-wrap">
+    <div class="search-inner">
+        <i class="fas fa-times search-close" id="search-close"></i>
+        <div class="search-cell">
+            <form method="get">
+                <div class="search-field-holder">
+                    <input type="search" class="main-search-input" placeholder="Search...">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Fullscreen search area end here -->
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">Professional QA Training</div>
+                <h1>Master <span class="highlight" style="padding-bottom: 10px;">Software Testing</span> Skills</h1>
+                <p>Transform your career with comprehensive manual & automation testing courses. Learn from industry experts with real-world projects and personalized coaching.</p>
+                
+                <div class="hero-cta">
+                    <a href="#packages-section" class="hero-btn">Start Your Journey</a>
+                    <a href="#" class="watch-demo">
+                        <div class="play-circle"></div>
+                        <span>Watch Demo</span>
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Students Trained</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Job Success Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">18+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <div class="hero-mockup">
+                        <div class="mockup-header">
+                            <img src="assets/images/service/program-technique.jpg" alt="QA Testing Dashboard">
+                        </div>
+                        <!--<div class="mockup-content">-->
+                        <!--    <div class="mockup-icon">🧪</div>-->
+                        <!--    <div class="mockup-title">QA Testing Platform</div>-->
+                        <!--    <div class="mockup-subtitle">Professional Testing Environment</div>-->
+                        <!--</div>-->
+                    </div>
+                    
+                    <div class="floating-card card-1">
+                        <div class="card-icon">✓</div>
+                        <div class="card-text">Test Passed</div>
+                    </div>
+                    
+                    <div class="floating-card card-2">
+                        <div class="card-icon">🤖</div>
+                        <div class="card-text">Automation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-container-modal">
+            <button class="close-video" id="closeVideo">&times;</button>
+            <div class="video-wrapper">
+                <video id="demoVideo" controls>
+                    <source src="https://res.cloudinary.com/dczg9htor/video/upload/v1754058147/INTRODUCTION_TO_SOFTWARE_TESTING_j7ghp8.mov">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Selection Modal -->
+    <div id="courseModal" class="course-modal">
+        <div class="course-modal-content">
+            <button class="close-course-modal" id="closeCourseModal">&times;</button>
+            
+            <h2 class="course-modal-title">Choose Your Path</h2>
+            <p class="course-modal-subtitle">Select the testing specialization that matches your career goals</p>
+            
+            <div class="course-options">
+                <a href="#manual-testing" class="course-option">
+                    <div class="course-icon">🧪</div>
+                    <h3 class="course-title">Manual Testing</h3>
+                    <p class="course-description">Master the fundamentals of software testing with hands-on manual testing techniques</p>
+                    <ul class="course-features">
+                        <li>Test Case Design & Execution</li>
+                        <li>Bug Reporting & Tracking</li>
+                        <li>API Testing with Postman</li>
+                        <li>Database Testing</li>
+                    </ul>
+                </a>
+                
+                <a href="#automation-testing" class="course-option">
+                    <div class="course-icon">🤖</div>
+                    <h3 class="course-title">Automation Testing</h3>
+                    <p class="course-description">Learn to automate testing processes using industry-standard tools and frameworks</p>
+                    <ul class="course-features">
+                        <li>Selenium WebDriver</li>
+                        <li>TestNG & JUnit Frameworks</li>
+                        <li>CI/CD Integration</li>
+                        <li>Performance Testing</li>
+                    </ul>
+                </a>
+            </div>
+            
+            <div class="or-divider">
+                <span>OR</span>
+            </div>
+            
+            <a href="https://wa.me/+447438240031?text=Hello Revolt" target="_blank" class="contact-option">
+                <span class="contact-icon">💬</span>
+                <span style="color: white;">Talk to an Advisor</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Course Selection Modal Functionality
+        const startJourneyBtn = document.querySelector('.hero-btn');
+        const courseModal = document.getElementById('courseModal');
+        const closeCourseModalBtn = document.getElementById('closeCourseModal');
+
+        // Open course selection modal
+        startJourneyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            courseModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close course modal
+        function closeCourseModal() {
+            courseModal.style.animation = 'fadeOut 0.3s ease-out';
+            const courseModalContent = document.querySelector('.course-modal-content');
+            courseModalContent.style.animation = 'scaleOut 0.3s ease-out';
+            
+            setTimeout(() => {
+                courseModal.classList.remove('show');
+                courseModal.style.animation = '';
+                courseModalContent.style.animation = '';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Close course modal when clicking the close button
+        closeCourseModalBtn.addEventListener('click', closeCourseModal);
+
+        // Close course modal when clicking outside the modal content
+        courseModal.addEventListener('click', function(e) {
+            if (e.target === courseModal) {
+                closeCourseModal();
+            }
+        });
+
+        // Close course modal when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && courseModal.classList.contains('show')) {
+                closeCourseModal();
+            }
+        });
+
+        // Handle course option clicks
+        document.querySelectorAll('.course-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const courseType = this.getAttribute('href').replace('#', '');
+                
+                // Close the modal first
+                closeCourseModal();
+                
+                // You can add logic here to redirect to specific course pages
+                setTimeout(() => {
+                    if (courseType === 'manual-testing') {
+                        // alert('Redirecting to Manual Testing Course...');
+                        window.location.href = 'https://revoltqa.com/revolt/public/video-course.html';
+                    } else if (courseType === 'automation-testing') {
+                        // alert('Redirecting to Automation Testing Course...');
+                        window.location.href = 'https://revoltqa.com/revolt/public/video-course.html';
+                    }
+                }, 400);
+            });
+        });
+
+        // Handle contact advisor click
+        document.querySelector('.contact-option').addEventListener('click', function(e) {
+            e.preventDefault();
+            closeCourseModal();
+            
+            setTimeout(() => {
+                // alert('Opening contact form...');
+                // You can add logic here to open a contact form or redirect to contact page
+                window.location.href = 'https://wa.me/+447438240031?text=Hello Revolt';
+            }, 400);
+        });
+
+        // Video Modal Functionality
+        const watchDemoBtn = document.querySelector('.watch-demo');
+        const videoModal = document.getElementById('videoModal');
+        const closeVideoBtn = document.getElementById('closeVideo');
+        const demoVideo = document.getElementById('demoVideo');
+
+        // Open video modal
+        watchDemoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            videoModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close video modal
+        function closeVideoModal() {
+            videoModal.style.animation = 'fadeOut 0.3s ease-out';
+            const videoContainer = document.querySelector('.video-container-modal');
+            videoContainer.style.animation = 'scaleOut 0.3s ease-out';
+            
+            setTimeout(() => {
+                videoModal.classList.remove('show');
+                videoModal.style.animation = '';
+                videoContainer.style.animation = '';
+                demoVideo.pause();
+                demoVideo.currentTime = 0;
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
+        }
+
+        // Close video when clicking the close button
+        closeVideoBtn.addEventListener('click', closeVideoModal);
+
+        // Close video when clicking outside the video container
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        // Close video when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoModal.classList.contains('show')) {
+                closeVideoModal();
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.classList.contains('watch-demo')) return; // Skip for watch demo button
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Demo Video Section -->
+    <!--<section class="section">-->
+    <!--    <div class="container">-->
+    <!--        <div class="section-title">-->
+    <!--            <h2>See Testing in Action</h2>-->
+    <!--            <p>Watch our comprehensive demo covering both manual and automation testing approaches</p>-->
+    <!--        </div>-->
+            
+    <!--        <div class="demo-video">-->
+    <!--            <h3 style="color: var(secondary-color); margin-bottom: 1rem;">Manual vs Automation Testing Demo</h3>-->
+    <!--            <div class="video-container">-->
+    <!--                <div class="video-placeholder">-->
+    <!--                    <div class="play-button">-->
+    <!--                        <span class="play-icon">▶</span>-->
+    <!--                    </div>-->
+    <!--                    <h4 style="color: white;">Complete Testing Demo</h4>-->
+    <!--                    <p>See real-world testing scenarios in action</p>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <p style="color: var(text-light); margin-top: 1rem;">Learn the fundamental differences between manual and automation testing through practical examples</p>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
+    
+    <!-- Main Courses Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Testing Courses</h2>
+                <p>Choose your path to becoming a skilled software tester</p>
+            </div>
+            
+            <div class="courses-grid">
+                <!-- Manual Testing Course -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <!--<div class="course-icon">🧪</div>-->
+                        <img class="course-icon-img" src="assets/images/banner/2150061972.jpg">
+                        <h3 style="color: white;">Manual Testing Course</h3>
+                        <div class="course-duration">8-10 Weeks</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-features">
+                            <div class="feature">
+                                <div class="feature-number">6</div>
+                                <div class="feature-label">Modules</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-number">25+</div>
+                                <div class="feature-label">Topics</div>
+                            </div>
+                            <!--<div class="feature">-->
+                            <!--    <div class="feature-number">3</div>-->
+                            <!--    <div class="feature-label">Projects</div>-->
+                            <!--</div>-->
+                        </div>
+                        
+                        <!--<ul class="course-modules">-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">1</div>-->
+                        <!--            Software Testing Fundamentals-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>What is software testing?</li>-->
+                        <!--            <li>SDLC vs STLC</li>-->
+                        <!--            <li>Types and levels of testing</li>-->
+                        <!--            <li>QA vs QC vs Testing</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">2</div>-->
+                        <!--            Test Documentation & Techniques-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Test case design techniques</li>-->
+                        <!--            <li>Writing test cases and scenarios</li>-->
+                        <!--            <li>Test plan and strategy</li>-->
+                        <!--            <li>Traceability matrix</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">3</div>-->
+                        <!--            Defect Life Cycle & Bug Reporting-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Defect lifecycle (New → Closed)</li>-->
+                        <!--            <li>Severity vs Priority</li>-->
+                        <!--            <li>Writing good bug reports</li>-->
+                        <!--            <li>Using JIRA or Bugzilla</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">4</div>-->
+                        <!--            Testing Types-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Functional vs Non-functional</li>-->
+                        <!--            <li>Smoke, Sanity, Regression testing</li>-->
+                        <!--            <li>Black-box testing</li>-->
+                        <!--            <li>UAT (User Acceptance Testing)</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">5</div>-->
+                        <!--            Test Execution & Reporting-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Executing test cases</li>-->
+                        <!--            <li>Capturing test results</li>-->
+                        <!--            <li>Test summary and reporting</li>-->
+                        <!--            <li>Team communication</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">6</div>-->
+                        <!--            Agile & Real-World Projects-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Agile testing process</li>-->
+                        <!--            <li>Manual testing in Scrum teams</li>-->
+                        <!--            <li>Daily standups, retrospectives</li>-->
+                        <!--            <li>Real-world case study</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--</ul>-->
+                        
+                        <a href="#" class="btn" style="width: 100%; text-align: center;">Enroll €400</a>
+                    </div>
+                </div>
+                
+                <!-- Automation Testing Course -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <!--<div class="course-icon">🤖</div>-->
+                        <img class="course-icon-img" src="assets/images/banner/18705.jpg">
+                        <h3 style="color: white;">Automation Testing Course</h3>
+                        <div class="course-duration">10-12 Weeks</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-features">
+                            <div class="feature">
+                                <div class="feature-number">6</div>
+                                <div class="feature-label">Modules</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-number">30+</div>
+                                <div class="feature-label">Topics</div>
+                            </div>
+                            <!--<div class="feature">-->
+                            <!--    <div class="feature-number">5</div>-->
+                            <!--    <div class="feature-label">Projects</div>-->
+                            <!--</div>-->
+                        </div>
+                        
+                        <!--<ul class="course-modules">-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">1</div>-->
+                        <!--            Introduction to Automation Testing-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>What is automation testing?</li>-->
+                        <!--            <li>Manual vs Automation</li>-->
+                        <!--            <li>ROI and when to automate</li>-->
+                        <!--            <li>Choosing the right tools</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">2</div>-->
+                        <!--            Automation Tools Overview-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Selenium WebDriver (Java/Python)</li>-->
+                        <!--            <li>TestNG or JUnit</li>-->
+                        <!--            <li>Browser drivers, IDEs</li>-->
+                        <!--            <li>CI/CD tools (Jenkins, Git)</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">3</div>-->
+                        <!--            Writing Test Scripts-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Locators (ID, XPath, CSS Selectors)</li>-->
+                        <!--            <li>Test scripts for login, signup</li>-->
+                        <!--            <li>Data-driven testing</li>-->
+                        <!--            <li>Assertions and validations</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">4</div>-->
+                        <!--            Frameworks & Best Practices-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Page Object Model (POM)</li>-->
+                        <!--            <li>Hybrid frameworks</li>-->
+                        <!--            <li>Folder structure conventions</li>-->
+                        <!--            <li>Reusability and modularity</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">5</div>-->
+                        <!--            Integration & Execution-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>Running tests in Jenkins</li>-->
+                        <!--            <li>Cross-browser testing</li>-->
+                        <!--            <li>Test reports (Extent, Allure)</li>-->
+                        <!--            <li>Git version control basics</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--    <li class="module-item">-->
+                        <!--        <div class="module-title">-->
+                        <!--            <div class="module-number">6</div>-->
+                        <!--            Real-World Project-->
+                        <!--        </div>-->
+                        <!--        <ul class="module-topics">-->
+                        <!--            <li>End-to-end test automation</li>-->
+                        <!--            <li>Test case selection</li>-->
+                        <!--            <li>Automation suite development</li>-->
+                        <!--            <li>Debugging and maintenance</li>-->
+                        <!--        </ul>-->
+                        <!--    </li>-->
+                        <!--</ul>-->
+                        
+                        <a href="#" class="btn" style="width: 100%; text-align: center;">Enroll €700</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 1-on-1 Coaching Section -->
+    <section class="section coaching-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>1-on-1 Coaching Sessions</h2>
+                <p>Get personalized guidance with expert career coaches alongside your course curriculum</p>
+            </div>
+            
+            <div class="coaching-cards">
+                <div class="coaching-card">
+                    <div class="coaching-icon">👨‍🏫</div>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Manual Testing + Coaching</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-light);">Complete manual testing course with dedicated career coaching sessions</p>
+                    <ul class="coaching-benefits">
+                        <li>Weekly 1-on-1 coaching calls</li>
+                        <li>Resume review and optimization</li>
+                        <li>Interview preparation sessions</li>
+                        <li>Career roadmap planning</li>
+                        <li>Portfolio development guidance</li>
+                        <li>Job search strategy</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" style="width: 100%; text-align: center;">Get Manual + Coaching €800</a>
+                </div>
+                
+                <div class="coaching-card">
+                    <div class="coaching-icon">🚀</div>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Automation Testing + Coaching</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-light);">Advanced automation course with personalized career mentorship</p>
+                    <ul class="coaching-benefits">
+                        <li>Bi-weekly 1-on-1 coaching calls</li>
+                        <li>Technical interview preparation</li>
+                        <li>Code review sessions</li>
+                        <li>Industry connections and networking</li>
+                        <li>Salary negotiation guidance</li>
+                        <li>Long-term career planning</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" style="width: 100%; text-align: center;">Get Automation + Coaching €1,400</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bonuses Section -->
+    <section class="section bonuses-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Exclusive Course Bonuses</h2>
+                <p>Get these valuable resources included with every course enrollment</p>
+            </div>
+            
+            <div class="bonuses-grid">
+                <div class="bonus-card">
+                    <div class="bonus-icon">📄</div>
+                    <h3>CV & Cover Letter Templates</h3>
+                    <p>Professional, ATS-optimized resume and cover letter templates specifically designed for testing roles. Stand out from the competition with industry-proven formats.</p>
+                    <span class="bonus-value">Worth €50</span>
+                </div>
+                
+                <div class="bonus-card">
+                    <div class="bonus-icon">💼</div>
+                    <h3>LinkedIn Profile Checklist</h3>
+                    <p>Complete optimization guide to create a compelling LinkedIn profile that attracts recruiters and showcases your testing expertise effectively.</p>
+                    <span class="bonus-value">Worth €30</span>
+                </div>
+                
+                <div class="bonus-card">
+                    <div class="bonus-icon">🚀</div>
+                    <h3>Career Launch Checklist</h3>
+                    <p>Step-by-step roadmap to transition into your testing career, including job search strategies, networking tips, and interview preparation.</p>
+                    <span class="bonus-value">Worth €40</span>
+                </div>
+                
+                <div class="bonus-card">
+                    <div class="bonus-icon">🤖</div>
+                    <h3>LinkedIn Skill Bot</h3>
+                    <p>Automated tool to help you identify and highlight the most relevant testing skills on your LinkedIn profile based on current market demands.</p>
+                    <span class="bonus-value">Worth €25</span>
+                </div>
+                
+                <div class="bonus-card">
+                    <div class="bonus-icon">✉️</div>
+                    <h3>Message & Email Templates</h3>
+                    <p>Ready-to-use templates for networking messages, follow-up emails, and professional communication with potential employers and connections.</p>
+                    <span class="bonus-value">Worth €35</span>
+                </div>
+                
+                <div class="bonus-card">
+                    <div class="bonus-icon">👥</div>
+                    <h3>Private Community Access</h3>
+                    <p>Join our exclusive community of testing professionals, get ongoing support, share experiences, and network with industry peers.</p>
+                    <span class="bonus-value">Worth €100</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instructors Section -->
+    <section class="section instructors-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Your Expert Instructors</h2>
+                <p>Learn from industry professionals with years of real-world testing experience</p>
+            </div>
+            
+            <div class="instructors-grid">
+                <div class="instructor-card">
+                    <div class="instructor-image">
+                        <!-- Replace with actual instructor image -->
+                        <img src="assets/images/team/team-image1.jpg" alt="Clinton"> 
+                    </div>
+                    <h3 class="instructor-name">Clinton</h3>
+                    <p class="instructor-title">Senior QA Engineer & Manual Testing Expert</p>
+                    <p class="instructor-bio">
+                        With over 8 years of experience in software testing, Clinton has worked with leading fintech and e-commerce companies. He specializes in manual testing methodologies, test case design, and quality assurance processes. Clinton has mentored over 200 students and helped them land their first testing roles.
+                    </p>
+                    <div class="instructor-stats">
+                        <div class="stat">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Students Mentored</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Companies Worked</span>
+                        </div>
+                    </div>
+                    <div class="instructor-specialties">
+                        <span class="specialty-tag">Manual Testing</span>
+                        <span class="specialty-tag">Test Planning</span>
+                        <span class="specialty-tag">JIRA</span>
+                        <span class="specialty-tag">Agile Testing</span>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-image">
+                        <!-- Replace with actual instructor image -->
+                         <img src="assets/images/team/team-image2.jpg" alt="Daniel"> 
+                    </div>
+                    <h3 class="instructor-name">Daniel</h3>
+                    <p class="instructor-title">Automation Testing Architect & DevOps Expert</p>
+                    <p class="instructor-bio">
+                        Dan brings 10+ years of automation testing expertise from top tech companies. He's an expert in Selenium, TestNG, Jenkins, and CI/CD pipelines. His practical approach to teaching automation frameworks has helped hundreds of students transition from manual to automation testing successfully.
+                    </p>
+                    <div class="instructor-stats">
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Students Trained</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Automation Projects</span>
+                        </div>
+                    </div>
+                    <div class="instructor-specialties">
+                        <span class="specialty-tag">Selenium</span>
+                        <span class="specialty-tag">TestNG</span>
+                        <span class="specialty-tag">Jenkins</span>
+                        <span class="specialty-tag">Python</span>
+                        <span class="specialty-tag">Java</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Students Say</h2>
+                <p>Success stories from our QA Testing Academy graduates</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The manual testing course was exactly what I needed to break into QA. The real-world projects and 1-on-1 coaching helped me land my first testing job within 3 months of completing the course.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DU</div>
+                        <div class="author-info">
+                            <h4>Daniel Umah</h4>
+                            <p>QA Tester at TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The automation testing course transformed my career. I went from manual testing to automation engineer with a 40% salary increase. The Selenium and framework modules were incredibly detailed.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TK</div>
+                        <div class="author-info">
+                            <h4>Teslim Kabir</h4>
+                            <p>Automation Engineer at StartupXYZ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The coaching sessions were game-changing. My coach helped me prepare for interviews, optimize my resume, and negotiate my salary. I'm now working as a Senior QA at a Fortune 500 company.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JA</div>
+                        <div class="author-info">
+                            <h4>Jennifer Adeayo</h4>
+                            <p>Senior QA at MegaCorp Inc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to common questions about our courses and coaching</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do I need prior programming experience for the automation course?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        No, you don't need extensive programming experience. We start with basics and gradually build up your skills. However, basic understanding of HTML and willingness to learn programming concepts will be helpful.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How long does it take to complete the courses?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        The manual testing course takes 8-10 weeks, and the automation testing course takes 10-12 weeks. This assumes 10-15 hours of study per week. You can go at your own pace.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's included in the 1-on-1 coaching sessions?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Coaching sessions include resume review, interview preparation, career planning, portfolio development, job search strategy, and ongoing mentorship. Sessions are tailored to your specific goals and needs.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you provide job placement assistance?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        While we don't guarantee job placement, our coaching sessions include comprehensive job search support, interview preparation, and access to our network of industry contacts. Many of our students find jobs within 3-6 months.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I take both manual and automation courses?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes, many students take both courses for comprehensive QA skills. We recommend starting with manual testing to build foundational knowledge, then moving to automation testing.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What tools and software will I learn?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        You'll learn industry-standard tools including JIRA, Selenium WebDriver, TestNG, Jenkins, Git, and various testing frameworks. All tools covered are widely used in the industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script>
+        fetch('layout/Footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+    
+    <!-- Back to top area start here -->
+    <div class="scroll-up">
+        <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Back to top area end here -->
+
+    <!-- Jquery 3.7.0 Min Js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap min Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Mean menu Js -->
+    <script src="assets/js/meanmenu.js"></script>
+    <!-- Swiper bundle min Js -->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!-- Counterup min Js -->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!-- Wow min Js -->
+    <script src="assets/js/wow.min.js"></script>
+    <!-- Pace min Js -->
+    <script src="assets/js/pace.min.js"></script>
+    <!-- Magnific popup min Js -->
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <!-- Nice select min Js -->
+    <script src="assets/js/nice-select.min.js"></script>
+    <!-- Isotope pkgd min Js -->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <!-- Waypoints Js -->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!-- Script Js -->
+    <script src="assets/js/script.js"></script>
+    
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const faqAnswer = faqItem.querySelector('.faq-answer');
+                const icon = button.querySelector('.faq-icon');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.querySelector('.faq-answer').classList.remove('active');
+                        item.querySelector('.faq-question').classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                faqAnswer.classList.toggle('active');
+                button.classList.toggle('active');
+            });
+        });
+        
+        // Video Play Button Functionality
+        document.querySelector('.play-button').addEventListener('click', () => {
+            alert('Video demo would play here. This is a placeholder for the actual video implementation.');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe course cards and coaching cards
+        document.querySelectorAll('.course-card, .coaching-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>QA Testing Academy - Professional Testing Courses</title>
+        <!-- Favicon img -->
+        <link rel="shortcut icon" href="assets/images/favicon.png">
+        <!-- Bootstarp min css -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Mean menu css -->
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <!-- All min css -->
+        <link rel="stylesheet" href="assets/css/all.min.css">
+        <!-- Swiper bundle min css -->
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <!-- Magnigic popup css -->
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <!-- Animate css -->
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <!-- Nice select css -->
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <!-- Style css -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <style>
+            :root {
+            --primary: #2a52be;       /* Darker blue */
+            --primary-light: #3a6bdf;  /* Medium blue */
+            --primary-dark: #1a3a8f;   /* Deep navy */
+            --primary-darker: #0f2259; /* Very dark blue */
+            --accent: #4d8eff;        /* Bright accent blue */
+            --white: #ffffff;
+            --off-white: #f5f9ff;
+        }
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            
+            body {
+                background-color: var(--light-gray);
+                color: var(--text-dark);
+                line-height: 1.6;
+            }
+            
+            /* Header Styles */
+            header {
+                background-color: var(--white);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                padding: 1rem 2rem;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--secondary-color);
+            }
+            
+            .logo span {
+                color: var(--primary-color);
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+            }
+            
+            .nav-links a {
+                text-decoration: none;
+                color: var(--text-dark);
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+            
+            .nav-links a:hover {
+                color: var(--primary-color);
+            }
+            
+            .btn {
+                background-color: var(--primary-color);
+                color: var(--white);
+                padding: 0.5rem 1.5rem;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.3s;
+            }
+            
+            .btn:hover {
+                background-color: var(--secondary-color);
+            }
+            
+            .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, 
+                var(--primary-dark) 0%, 
+                var(--primary) 50%, 
+                var(--primary-darker) 100%);
+            padding: 60px 0;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+            padding-right: 40px;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards 0.3s;
+        }
+        
+        .hero-image-container {
+            flex: 1;
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255,255,255,0.15);
+            transform: translateY(30px) rotateY(-10deg);
+            opacity: 0;
+            animation: floatIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .course-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 24px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 24px;
+            transform: translateY(10px);
+            opacity: 0;
+            animation: badgeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.4s;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transform: translateY(10px);
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            max-width: 500px;
+            margin-bottom: 10px;
+            transform: translateY(10px);
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.6s;
+        }
+        
+        /* Floating decorative elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(2px);
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .element-1 {
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .element-2 {
+            width: 80px;
+            height: 80px;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+        
+        .element-3 {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .element-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 25%;
+            left: 10%;
+            animation-delay: 3s;
+        }
+        
+        /* Glow effects */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        .glow-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            top: -100px;
+            right: -100px;
+            animation: pulse 8s ease infinite;
+        }
+        
+        .glow-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-light);
+            bottom: -150px;
+            left: -100px;
+            animation: pulse 10s ease infinite 2s;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes badgeIn {
+            from {
+                transform: translateY(10px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes floatIn {
+            from {
+                transform: translateY(30px) rotateY(-15deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) rotateY(-5deg);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+        
+        /* Image floating animation */
+        @keyframes floatImage {
+            0%, 100% {
+                transform: translateY(0) rotateY(-5deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateY(-8deg);
+            }
+        }
+        
+        .hero-image {
+            animation: floatImage 8s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 0 60px;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+                max-width: 100%;
+            }
+            
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-image {
+                max-width: 450px;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 38px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .hero-section {
+                min-height: 60vh;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .course-badge {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            .hero-section {
+                min-height: 55vh;
+            }
+        }
+            
+            /* Course Section */
+            .container-2 {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 3rem 2rem;
+            }
+            
+            .section-title {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+                color: var(--secondary-color);
+            }
+            
+            .section-title p {
+                color: var(--text-light);
+                margin-top: 0.5rem;
+            }
+            
+            .course-container {
+                display: grid;
+                grid-template-columns: 7fr 3fr;
+                gap: 2rem;
+            }
+            
+            .video-player {
+                background-color: var(--secondary-color);
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+                padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            }
+            
+            .video-placeholder {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: var(--white);
+                flex-direction: column;
+            }
+            
+            .play-icon {
+                width: 80px;
+                height: 80px;
+                background-color: rgba(255,255,255,0.2);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                margin-bottom: 1rem;
+            }
+            
+            .video-title {
+                font-size: 1.2rem;
+                margin-top: 1rem;
+                padding: 0 2rem;
+                text-align: center;
+            }
+            
+            .course-details {
+                margin-top: 2rem;
+            }
+            
+            .course-details h3 {
+                font-size: 1.5rem;
+                color: var(--secondary-color);
+                margin-bottom: 1rem;
+            }
+            
+            .instructor {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+            }
+            
+            .instructor-img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: var(--primary-color);
+                margin-right: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-weight: bold;
+            }
+            
+            .instructor-info h4 {
+                color: var(--secondary-color);
+            }
+            
+            .instructor-info p {
+                color: var(--text-light);
+                font-size: 0.9rem;
+            }
+            
+            .course-description {
+                margin-bottom: 2rem;
+            }
+            
+            .course-description p {
+                margin-bottom: 1rem;
+            }
+            
+            .course-sidebar {
+                background-color: var(--white);
+                border-radius: 8px;
+                padding: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                position: sticky;
+                top: 100px;
+                height: fit-content;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            
+            .sidebar-title {
+                font-size: 1.2rem;
+                color: var(--secondary-color);
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid var(--light-gray);
+            }
+            
+            .course-progress {
+                margin-bottom: 1.5rem;
+            }
+            
+            .progress-bar {
+                width: 100%;
+                height: 8px;
+                background-color: var(--light-gray);
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .progress-filled {
+                height: 100%;
+                width: 0%;
+                background-color: var(--primary-color);
+                border-radius: 4px;
+                transition: width 0.3s;
+            }
+            
+            .progress-text {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.9rem;
+                color: var(--text-light);
+            }
+            
+            .module-list {
+                list-style: none;
+            }
+            
+            .module-item {
+                margin-bottom: 1rem;
+            }
+            
+            .module-header {
+                display: flex;
+                justify-content: space-between;
+                cursor: pointer;
+                padding: 0.5rem 0;
+                font-weight: 500;
+                color: var(--secondary-color);
+                align-items: center;
+            }
+            
+            .module-header.active {
+                color: var(--primary-color);
+            }
+            
+            .module-title {
+                flex-grow: 1;
+            }
+            
+            .module-toggle {
+                margin-left: 1rem;
+            }
+            
+            .lesson-list {
+                list-style: none;
+                margin-left: 1rem;
+                margin-top: 0.5rem;
+                display: none;
+            }
+            
+            .lesson-list.show {
+                display: block;
+            }
+            
+            .lesson-item {
+                display: flex;
+                align-items: center;
+                padding: 0.5rem 0;
+                color: var(--text-light);
+                font-size: 0.9rem;
+                cursor: pointer;
+                border-left: 2px solid var(--light-gray);
+                padding-left: 0.5rem;
+                transition: all 0.3s;
+            }
+            
+            .lesson-item:hover {
+                color: var(--primary-color);
+                border-left-color: var(--primary-color);
+            }
+            
+            .lesson-item.active {
+                color: var(--primary-color);
+                font-weight: 500;
+                border-left-color: var(--primary-color);
+            }
+            
+            .lesson-icon {
+                margin-right: 0.5rem;
+                font-size: 0.8rem;
+                width: 15px;
+                text-align: center;
+            }
+            
+            .lesson-title {
+                flex-grow: 1;
+            }
+            
+            .lesson-time {
+                margin-left: 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .complete-btn {
+                display: block;
+                width: 100%;
+                background-color: var(--primary-color);
+                color: var(--white);
+                border: none;
+                padding: 0.8rem;
+                border-radius: 4px;
+                font-weight: 500;
+                cursor: pointer;
+                margin-top: 1.5rem;
+                transition: background-color 0.3s;
+            }
+            
+            .complete-btn:hover {
+                background-color: var(--secondary-color);
+            }
+            
+            /* Video controls */
+            .video-controls {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+            
+            .nav-btn {
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            .nav-btn:hover {
+                background-color: var(--secondary-color);
+            }
+            
+            .nav-btn:disabled {
+                background-color: var(--text-light);
+                cursor: not-allowed;
+            }
+            
+            /* Related Courses */
+            .related-courses {
+                margin-top: 4rem;
+            }
+            
+            .course-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            
+            .course-card {
+                background-color: var(--white);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            
+            .course-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .course-img {
+                height: 160px;
+                background-color: var(--secondary-color);
+                position: relative;
+            }
+            
+            .course-level {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background-color: var(--primary-color);
+                color: var(--white);
+                padding: 0.3rem 0.8rem;
+                border-radius: 4px;
+                font-size: 0.8rem;
+                font-weight: 500;
+            }
+            
+            .course-info {
+                padding: 1.5rem;
+            }
+            
+            .course-info h4 {
+                color: var(--secondary-color);
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .course-meta {
+                display: flex;
+                justify-content: space-between;
+                color: var(--text-light);
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .course-rating {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                color: #ffc107;
+            }
+            
+            /* Responsive */
+            @media (max-width: 992px) {
+                .course-container {
+                    grid-template-columns: 1fr;
+                }
+                
+                .course-sidebar {
+                    position: static;
+                    margin-top: 2rem;
+                    max-height: none;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                }
+                
+                .hero h1 {
+                    font-size: 2rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Preloader area start -->
+        <!--<div class="loading">-->
+        <!--    <span class="text-capitalize">L</span>-->
+        <!--    <span>o</span>-->
+        <!--    <span>a</span>-->
+        <!--    <span>d</span>-->
+        <!--    <span>i</span>-->
+        <!--    <span>n</span>-->
+        <!--    <span>g</span>-->
+        <!--</div>-->
+        <!--<div id="preloader">-->
+        <!--</div>-->
+        <!-- Preloader area end -->
+        
+        <!-- Mouse cursor area start here -->
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
+        <!-- Mouse cursor area end here -->
+        
+        <!-- Top header area start here -->
+        <!--<div class="header-top d-none d-lg-block">-->
+        <!--    <div class="container header__container">-->
+        <!--        <div class="header-top-wrp">-->
+        <!--            <ul class="info">-->
+        <!--                <li><svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+        <!--                        <path fill-rule="evenodd" clip-rule="evenodd"-->
+        <!--                              d="M13.8748 8.50453C13.8748 9.85566 12.7757 10.953 11.4263 10.953H3.39325C2.04384 10.953 0.94475 9.85563 0.94475 8.50453V3.39322C0.944449 2.95776 1.06111 2.53021 1.28253 2.15525L5.20216 6.07488C5.78856 6.663 6.57384 6.98706 7.41059 6.98706C8.24563 6.98706 9.03091 6.663 9.61731 6.07488L13.5369 2.15525C13.7584 2.5302 13.875 2.95776 13.8747 3.39322V8.50453H13.8748ZM11.4263 0.94475H3.39325C2.836 0.94475 2.32159 1.13334 1.91009 1.44712L5.86916 5.40791C6.27897 5.81597 6.82591 6.04231 7.41059 6.04231C7.99356 6.04231 8.54053 5.81597 8.95031 5.40791L12.9094 1.44712C12.4979 1.13334 11.9835 0.94475 11.4263 0.94475ZM11.4263 0H3.39325C1.52259 0 0 1.52259 0 3.39325V8.50456C0 10.3769 1.52259 11.8978 3.39325 11.8978H11.4263C13.2969 11.8978 14.8195 10.3769 14.8195 8.50456V3.39322C14.8195 1.52256 13.2969 0 11.4263 0Z"-->
+        <!--                              fill="white" />-->
+        <!--                    </svg>-->
+        <!--                    <a href="mailto:admin@revoltqa.com" class="ms-1">admin@revoltqa.com</a>-->
+        <!--                </li>-->
+        <!--                <li class="ms-4"><svg width="16" height="15" viewBox="0 0 16 15" fill="none"-->
+        <!--                                      xmlns="http://www.w3.org/2000/svg">-->
+        <!--                        <g clip-path="url(#clip0_529_224)">-->
+        <!--                            <path-->
+        <!--                                d="M14.8984 10.5909C14.8735 10.5703 12.0629 8.57063 11.304 8.69297C10.9379 8.75766 10.7288 9.0075 10.3093 9.50719C10.1933 9.6463 10.0747 9.7832 9.95352 9.91781C9.68836 9.83143 9.42973 9.72616 9.17961 9.60281C7.88845 8.97422 6.84524 7.93101 6.21665 6.63984C6.0933 6.38973 5.98803 6.1311 5.90165 5.86594C6.03946 5.73984 6.23258 5.57719 6.31508 5.50781C6.81243 5.09062 7.0618 4.88109 7.12649 4.51453C7.25915 3.75562 5.24915 0.945937 5.22852 0.920625C5.13698 0.790808 5.01777 0.682933 4.87948 0.604789C4.74118 0.526645 4.58726 0.480181 4.42883 0.46875C3.61415 0.46875 1.28821 3.48563 1.28821 3.99422C1.28821 4.02375 1.33086 7.02562 5.03258 10.7911C8.79383 14.4886 11.7957 14.5312 11.8252 14.5312C12.3334 14.5312 15.3507 12.2053 15.3507 11.3906C15.3392 11.2322 15.2926 11.0783 15.2144 10.94C15.1362 10.8017 15.0282 10.6825 14.8984 10.5909ZM11.7732 13.5909C11.3663 13.5562 8.84446 13.2239 5.69446 10.1297C2.58524 6.96422 2.26133 4.43813 2.22899 4.04672C2.84342 3.08233 3.58545 2.20548 4.43493 1.44C4.45368 1.45875 4.47852 1.48688 4.5104 1.52344C5.16188 2.41276 5.72309 3.36481 6.18571 4.36547C6.03527 4.51682 5.87626 4.65939 5.70946 4.7925C5.4508 4.98959 5.21328 5.21297 5.00071 5.45906C4.96474 5.50953 4.93914 5.56663 4.92538 5.62705C4.91162 5.68748 4.90998 5.75003 4.92055 5.81109C5.01975 6.24081 5.17169 6.65662 5.3729 7.04906C6.09378 8.52939 7.28997 9.72541 8.7704 10.4461C9.16276 10.6476 9.57859 10.7997 10.0084 10.8989C10.0694 10.9097 10.132 10.9082 10.1925 10.8944C10.2529 10.8807 10.31 10.8549 10.3604 10.8188C10.6074 10.6053 10.8315 10.3669 11.0293 10.1072C11.1765 9.93188 11.3729 9.69797 11.4474 9.63188C12.4506 10.094 13.4048 10.6559 14.2956 11.3091C14.3345 11.3419 14.3621 11.3672 14.3804 11.3836C13.6149 12.2333 12.7379 12.9755 11.7732 13.59V13.5909ZM11.6007 7.03125H12.5382C12.5371 6.03703 12.1416 5.08385 11.4386 4.38083C10.7356 3.67781 9.78243 3.28237 8.78821 3.28125V4.21875C9.5339 4.21949 10.2488 4.51605 10.7761 5.04333C11.3034 5.57062 11.6 6.28556 11.6007 7.03125Z"-->
+        <!--                                fill="white" />-->
+        <!--                            <path-->
+        <!--                                d="M13.9445 7.03125H14.882C14.8801 5.41566 14.2375 3.86677 13.0951 2.72437C11.9527 1.58198 10.4038 0.939361 8.78821 0.9375V1.875C10.1552 1.87661 11.4658 2.42038 12.4324 3.38701C13.3991 4.35365 13.9428 5.66422 13.9445 7.03125Z"-->
+        <!--                                fill="white" />-->
+        <!--                        </g>-->
+        <!--                        <defs>-->
+        <!--                            <clipPath>-->
+        <!--                                <rect width="15" height="15" fill="white" transform="translate(0.819458)" />-->
+        <!--                            </clipPath>-->
+        <!--                        </defs>-->
+        <!--                    </svg>-->
+        
+        <!--                    <a href="tel:+44 7438 240031" class="ms-1">+44 7438 240031</a>-->
+        <!--                </li>-->
+        <!--            </ul>-->
+        <!--            <ul class="link-info">-->
+        <!--                <li><a href="https://x.com/revoltteknology" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>-->
+        <!--                <li><a href="https://instagram.com/revolt_technology" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>-->
+        <!--            </ul>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <!-- Top header area end here -->
+    
+        <!-- Header area start here -->
+        <header class="header-area">
+            <div class="container header__container">
+                <div class="header__main">
+                    <a href="index.html" class="logo">
+                        <!--<img src="https://res.cloudinary.com/ddlhom1zz/image/upload/v1731170655/Storebridger/webpages/wp6pvswjhnwxgmb5lyia.png" alt="logo">-->
+                        <img src="./assets/images/logo/Revolt-Logomark.png" alt="logo">
+                    </a>
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="testing-courses-page.html">Courses</a></li>
+                                <li><a href="payment.html">Pricing</a></li>
+                                <!--<li><a href="index.html#testimonial-section">Testimonials</a></li>-->
+                                <!--<li><a href="index.html#faq-section">FAQ</a></li>-->
+                                <!--<li class="ml-20 d-none d-lg-block"><a class="search-trigger" href="#0"><svg width="17"-->
+                                <!--                                                                             height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+                                <!--            <g clip-path="url(#clip0_307_344)">-->
+                                <!--                <path-->
+                                <!--                    d="M16.0375 14.9381L12.0784 11.0334C13.0625 9.86621 13.6554 8.36744 13.6554 6.73438C13.6554 3.02103 10.5925 0 6.82774 0C3.0629 0 0 3.02103 0 6.73438C0 10.4475 3.0629 13.4683 6.82774 13.4683C8.4834 13.4683 10.0031 12.8836 11.1865 11.913L15.1456 15.8178C15.2687 15.9393 15.4301 16 15.5915 16C15.7529 16 15.9143 15.9393 16.0375 15.8178C16.2839 15.5748 16.2839 15.181 16.0375 14.9381ZM1.26142 6.73438C1.26142 3.70705 3.75845 1.24414 6.82774 1.24414C9.89695 1.24414 12.3939 3.70705 12.3939 6.73438C12.3939 9.76146 9.89695 12.2241 6.82774 12.2241C3.75845 12.2241 1.26142 9.76146 1.26142 6.73438Z"-->
+                                <!--                    fill="#0F0D1D" />-->
+                                <!--            </g>-->
+                                <!--            <defs>-->
+                                <!--                <clipPath id="clip0_307_344">-->
+                                <!--                    <rect width="16.2222" height="16" fill="white" />-->
+                                <!--                </clipPath>-->
+                                <!--            </defs>-->
+                                <!--        </svg>-->
+                                <!--    </a></li>-->
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="d-none d-lg-inline-block">
+                        <a href="#packages-section" class="btn-one">Get Started <i
+                                class="fa-regular fa-arrow-right-long"></i></a>
+                    </div>
+                    <div class="bars d-block d-lg-none">
+                        <i id="openButton" class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header area end here -->
+        
+        
+        <!-- Sidebar area start here -->
+        <div id="targetElement" class="sidebar-area sidebar__hide">
+            <div class="sidebar__overlay"></div>
+            <a href="index.html" class="logo mb-40">
+                <img src="https://res.cloudinary.com/ddlhom1zz/image/upload/v1731170655/Storebridger/webpages/wp6pvswjhnwxgmb5lyia.png" alt="logo">
+            </a>
+            <!-- <div class="sidebar__search mb-30">
+                <input type="text" placeholder="Search...">
+                <i class="fa-regular fa-magnifying-glass"></i>
+            </div> -->
+            <div class="mobile-menu overflow-hidden"></div>
+            <ul class="info pt-40">
+                <li><i class="fa-solid primary-color fa-location-dot"></i> <a href="#0">20, Wenlock Road, London, UK</a>
+                </li>
+                <li class="py-2"><i class="fa-solid primary-color fa-phone-volume"></i> <a
+                        href="tel:+44 7438 240031">+44 7438 240031</a>
+                </li>
+                <li><i class="fa-solid primary-color fa-paper-plane"></i> <a href="#0">admin@revolttechhub.com</a></li>
+            </ul>
+            <div class="social-icon mt-20">
+                <a href="#0"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#0"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#0"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#0"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <button id="closeButton" class="text-white"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <!-- Sidebar area end here -->
+        
+        <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Floating decorative elements -->
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
+        <div class="floating-element element-3"></div>
+        <div class="floating-element element-4"></div>
+        
+        <!-- Glow effects -->
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="course-badge">Expert Video Course</span>
+                    <h1 class="hero-title">Manual Testing Masterclass</h1>
+                    <p class="hero-subtitle">
+                        Master the fundamentals of software testing and quality assurance with this comprehensive course. Dive deep into quality assurance with our comprehensive video lessons, designed by industry professionals.
+                    </p>
+                </div>
+                <div class="hero-image-container">
+                    <!-- Replace with your actual image path -->
+                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Manual Testing Course" 
+                         class="hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of your video course content would go here -->
+    
+    <script>
+        // Enhanced intersection observer with GSAP-like easing
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = (element, animationClass) => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add(animationClass);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                observer.observe(element);
+            };
+            
+            // Animate elements
+            document.querySelectorAll('.hero-text, .hero-image, .course-badge, .hero-title, .hero-subtitle').forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                document.querySelector('.course-badge').style.animation = 'badgeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards';
+                document.querySelector('.hero-title').style.animation = 'fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.2s';
+                document.querySelector('.hero-subtitle').style.animation = 'fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.3s';
+                document.querySelector('.hero-text').style.animation = 'fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards';
+                document.querySelector('.hero-image').style.animation = 'floatIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.3s, floatImage 8s ease-in-out infinite 1.5s';
+            }, 300);
+            
+            // Add parallax effect to floating elements
+            window.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                document.querySelectorAll('.floating-element').forEach((el, i) => {
+                    const speed = 0.05 + (i * 0.02);
+                    const xMove = x * 20 * speed;
+                    const yMove = y * 20 * speed;
+                    
+                    el.style.transform = `translate(${xMove}px, ${yMove}px)`;
+                });
+            });
+        });
+    </script>
+
+    <!-- Rest of your video course content would go here -->
+    
+    <script>
+        // Simple intersection observer to trigger animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.hero-text, .hero-image, .course-badge, .hero-title, .hero-subtitle').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+        
+        <!-- Course Content Section -->
+        <div class="container-2">
+            <div class="course-container">
+                <!-- Main Content -->
+                <div class="course-main">
+                    <!--<div class="video-player">-->
+                    <!--    <div class="video-placeholder">-->
+                    <!--        <div class="play-icon">▶</div>-->
+                    <!--        <div class="video-title">Select a lesson to begin</div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    
+                    <!-- In your HTML, replace the video-player div with this: -->
+                    <div class="video-player">
+                        <iframe id="video-iframe" width="100%" height="100%" frameborder="0" allowfullscreen
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                src="">
+                        </iframe>
+                        <div class="video-placeholder" id="video-placeholder">
+                            <div class="play-icon">▶</div>
+                            <div class="video-title">Select a lesson to begin</div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-controls">
+                        <button class="nav-btn" id="prev-btn" disabled>Previous</button>
+                        <button class="nav-btn" id="next-btn" disabled>Next</button>
+                    </div>
+                    
+                    <div class="course-details">
+                        <h3>Manual Testing Masterclass</h3>
+                        <div class="instructor">
+                            <div class="instructor-img">TJ</div>
+                            <div class="instructor-info">
+                                <h4>Testing Instructor</h4>
+                                <p>QA Specialist with 10+ years experience</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-description">
+                            <p>This comprehensive manual testing course covers all aspects of software testing from fundamentals to advanced techniques. You'll learn about test planning, different types of testing, STLC, writing test cases, defect management, and specialized testing like mobile and API testing.</p>
+                            <p>Through practical examples and real-world scenarios, you'll gain the skills needed to become a proficient manual tester and prepare for a career in quality assurance.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="course-sidebar">
+                    <h3 class="sidebar-title">Course Contents</h3>
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-filled" id="progress-bar"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="progress-percent">0% Complete</span>
+                            <span id="progress-lessons">0/46 Lessons</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="module-list" id="course-modules">
+                        <!-- Modules will be inserted here by JavaScript -->
+                    </ul>
+                    
+                    <button class="complete-btn" id="complete-btn" disabled>Mark as Complete & Continue</button>
+                </div>
+            </div>
+            <br><br>
+            <!-- Related Courses -->
+            <!--<div class="related-courses">-->
+            <!--    <div class="section-title">-->
+            <!--        <h2>Related Courses</h2>-->
+            <!--        <p>Expand your testing knowledge with these recommended courses</p>-->
+            <!--    </div>-->
+                
+            <!--    <div class="course-grid">-->
+            <!--        <div class="course-card">-->
+            <!--            <div class="course-img">-->
+            <!--                <div class="course-level">Intermediate</div>-->
+            <!--            </div>-->
+            <!--            <div class="course-info">-->
+            <!--                <h4>Automated Testing with Selenium</h4>-->
+            <!--                <div class="course-meta">-->
+            <!--                    <span>15 Lessons</span>-->
+            <!--                    <div class="course-rating">-->
+            <!--                        <span>★★★★★</span>-->
+            <!--                        <span>4.9</span>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <p>Learn browser automation with Selenium WebDriver</p>-->
+            <!--            </div>-->
+            <!--        </div>-->
+                    
+            <!--        <div class="course-card">-->
+            <!--            <div class="course-img">-->
+            <!--                <div class="course-level">Advanced</div>-->
+            <!--            </div>-->
+            <!--            <div class="course-info">-->
+            <!--                <h4>Performance Testing with JMeter</h4>-->
+            <!--                <div class="course-meta">-->
+            <!--                    <span>10 Lessons</span>-->
+            <!--                    <div class="course-rating">-->
+            <!--                        <span>★★★★☆</span>-->
+            <!--                        <span>4.6</span>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <p>Master load and performance testing techniques</p>-->
+            <!--            </div>-->
+            <!--        </div>-->
+                    
+            <!--        <div class="course-card">-->
+            <!--            <div class="course-img">-->
+            <!--                <div class="course-level">Beginner</div>-->
+            <!--            </div>-->
+            <!--            <div class="course-info">-->
+            <!--                <h4>Software Testing Fundamentals</h4>-->
+            <!--                <div class="course-meta">-->
+            <!--                    <span>8 Lessons</span>-->
+            <!--                    <div class="course-rating">-->
+            <!--                        <span>★★★★★</span>-->
+            <!--                        <span>4.8</span>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <p>Essential concepts for new software testers</p>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+        </div>
+        
+        <!-- Footer -->
+        <div id="footer"></div>
+    
+        <script>
+            fetch('layout/Footer.html')
+                .then(response => response.text())
+                .then(data => document.getElementById('footer').innerHTML = data);
+        </script>
+        
+        <!-- Back to top area start here -->
+        <div class="scroll-up">
+            <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+        <!-- Back to top area end here -->
+    
+        <!-- Jquery 3.7.0 Min Js -->
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <!-- Bootstrap min Js -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- Mean menu Js -->
+        <script src="assets/js/meanmenu.js"></script>
+        <!-- Swiper bundle min Js -->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <!-- Counterup min Js -->
+        <script src="assets/js/jquery.counterup.min.js"></script>
+        <!-- Wow min Js -->
+        <script src="assets/js/wow.min.js"></script>
+        <!-- Pace min Js -->
+        <script src="assets/js/pace.min.js"></script>
+        <!-- Magnific popup min Js -->
+        <script src="assets/js/magnific-popup.min.js"></script>
+        <!-- Nice select min Js -->
+        <script src="assets/js/nice-select.min.js"></script>
+        <!-- Isotope pkgd min Js -->
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <!-- Waypoints Js -->
+        <script src="assets/js/jquery.waypoints.js"></script>
+        <!-- Script Js -->
+        <script src="assets/js/script.js"></script>
+    
+        <script>
+            // Course data structure
+            const courseData = [
+                {
+                    title: "1. INTRODUCTION TO MANUAL TESTING",
+                    lessons: [
+                        { title: "INTRODUCTION TO SOFTWARE TESTING", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058147/INTRODUCTION_TO_SOFTWARE_TESTING_j7ghp8.mov", completed: false, active: false },
+                        { title: "PRINCIPLES OF SOFTWARE TESTING", time: "10:01", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058146/PRINCIPLES_OF_SOFTWARE_TESTING_zv1deq.mov", completed: false, active: false },
+                        { title: "INTRODUCTION TO SDLC", time: "22:19", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058140/INTRODUCTION_TO_SDLC_mycazc.mov", completed: false, active: false },
+                        { title: "PHASES OF SDLC", time: "24:47", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058146/PHASES_OF_SLDC_kcaqca.mov", completed: false, active: false }
+                    ],
+                    expanded: true
+                },
+                {
+                    title: "2. STLC (SOFTWARE TESTING LIFECYCLE)",
+                    lessons: [
+                        { title: "INTRODUCTION TO STLC", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058988/INTRODUCTION_TO_STLC_re4aop.mov", completed: false, active: false },
+                        { title: "PHASES OF STLC", time: "2:09", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754660759/PHASES_OF_STLC_z6z2yu.mov", completed: false, active: false },
+                        { title: "ENTRY AND EXIT CRITERIA", time: "20:40", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058986/ENTRY_AND_EXIT_CRITERIA_bdnvk7.mov", completed: false, active: false }
+                        // { title: "REQUIREMENT ANALYSIS", time: "22:25", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false },
+                        // { title: "TEST PLAN", time: "24:54", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false },
+                        // { title: "TEST CASE DEVELOPMENT /TEST ENVIRONMENT", time: "28:18", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false },
+                        // { title: "TEST EXECUTION/TEST CLOSURE", time: "31:54", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "3. TEST PLAN",
+                    lessons: [
+                        { title: "WHAT IS A TEST PLAN", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058575/WHAT_IS_A_TEST_PLAN_sfgjze.mov", completed: false, active: false },
+                        { title: "HOW TO WRITE A TEST PLAN", time: "2:19", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058573/HOW_TO_WRITE_A_TEST_PLAN_mof6kv.mov", completed: false, active: false },
+                        { title: "ANALYSIS STAGE", time: "5:25", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058574/ANALYSIS_STAGE_atvdsa.mov", completed: false, active: false },
+                        { title: "DEVELOP TEST STRATEGY", time: "9:48", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754661255/DEVELOP_TEST_STRATEGY_usoppm.mov", completed: false, active: false },
+                        { title: "DEFINE TEST OBJECTIVE", time: "37:05", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754661370/DEFINE_TEST_OBJECTIVE_uktviy.mov", completed: false, active: false },
+                        { title: "DEFINE THE TEST CRITERIA", time: "44:04", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058569/DEFINE_TEST_CRITERIA_e2uvie.mov", completed: false, active: false },
+                        { title: "RESOURCE PLANNING", time: "46:37", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754661370/RESOURCE_PLANNING_jyn9rf.mov", completed: false, active: false },
+                        { title: "PLAN TEST ENVIRONMENT", time: "56:43", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058568/PLAN_TEST_ENVIRONMENT_fgbhoc.mov", completed: false, active: false },
+                        { title: "SCHEDULE TEST ESTIMATION", time: "55:38", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058566/SCHEDULE_TEST_ESTIMATION_ayk0q9.mov", completed: false, active: false },
+                        { title: "TEST DELIVERABLES", time: "57:40", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058567/TEST_DELIVERABLES_fyxfrl.mov", completed: false, active: false },
+                        { title: "SUMMARY", time: "1:02:03", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754058568/SUMMARY_psnlf1.mov", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "4. TYPES OF TESTING",
+                    lessons: [
+                        { title: "STATIC TESTING", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754060051/STATIC_TESTING_oxzcxk.mov", completed: false, active: false },
+                        { title: "WHAT IS TESTING REVIEW", time: "2:01", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754060050/WHAT_IS_TESTING_REVIEW_cldrv1.mov", completed: false, active: false },
+                        { title: "DYNAMIC TESTING", time: "8:20", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754060045/DYNAMIC_TESTING_tabnl5.mov", completed: false, active: false },
+                        { title: "WHITE BOX TESTING", time: "9:39", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754661569/WHITE_BOX_TESTING_mp5zlh.mov", completed: false, active: false },
+                        { title: "TYPES OF WHITE BOX TESTING", time: "11:52", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754661570/TYPES_OF_WHITE_BOX_TESTING_mee7ky.mov", completed: false, active: false },
+                        { title: "BLACK BOX TESTING", time: "21:57", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754661569/BLACK_BOX_TESTING_u78vee.mov", completed: false, active: false },
+                        { title: "TYPES OF BLACK BOX TESTING", time: "33:04", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754060043/TYPES_OF_BLACK_BOX_TESTING_b1amdd.mov", completed: false, active: false },
+                        { title: "HOW TO DO BLACKBOX TESTING", time: "41:11", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754060038/HOW_TO_DO_BLACK_BOX_TESTING_pnujk5.mov", completed: false, active: false },
+                        { title: "OTHER TYPES OF TESTING", time: "45:28", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754661569/OTHER_TYPES_OF_TESTING_yvpvfg.mp4", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                
+                {
+                    title: "5. USER STORY/ ACCEPTANCE CRITERIA",
+                    lessons: [
+                        { title: "WHAT IS A USER STORY", time: "4:18", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061119/WHAT_IS_A_USER_STORY_ACCEPTANCE_CRITERIA_jhd0zx.mov", completed: false, active: false },
+                        // { title: "ACCEPTANCE CRITERIA", time: "6:44", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false },
+                        { title: "ACCEPTANCE CRITERIA MAIN PURPOSES", time: "8:27", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061117/ACCEPTANCE_CRITERIA_MAIN_PURPOSES_je8f6r.mov", completed: false, active: false },
+                        { title: "ACCEPTANCE CRITERIA TYPES AND STRUCTURES", time: "11:28", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061117/ACCEPTANCE_CRITERIA_TYPES_AND_STRUCTURES_ab1wma.mov", completed: false, active: false },
+                        { title: "ACCEPTANCE CRITERIA TEMPLATE FORMAT", time: "16:32", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061114/ACCEPTANCE_CRITERIA_TEMPLATE_FORMAT_w9fmx7.mov", completed: false, active: false }
+                        // { title: "INTRODUCING TESTCASE", time: "20:09", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "6. TEST SCENARIO/ TEST CASE WRITING",
+                    lessons: [
+                        { title: "TEST SCENARIO", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754662336/TEST_SCENARIO_jo4wwn.mp4", completed: false, active: false },
+                        { title: "STEPS TO TEST CASE WRITING", time: "15:02", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754662328/STEPS_TO_TEST_CASE_WRITING_ifn0r3.mp4", completed: false, active: false },
+                        { title: "TEST CASE FORMAT", time: "25:56", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061393/TEST_CASE_FORMAT_vseb5k.mov", completed: false, active: false },
+                        { title: "BEST PRACTICE FOR WRITING GOOD TEST CASES", time: "30:57", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061396/BEST_PRACTICES_FOR_WRITING_GOOD_TEST_CASES_lbr7gr.mov", completed: false, active: false },
+                        { title: "TEST CASE MANAGEMENT TOOLS", time: "36:15", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061391/TEST_CASE_MANAGEMENT_TOOLS_fxp5jm.mov", completed: false, active: false },
+                        { title: "TEST CASE WRITING USING TEST RAIL", time: "55:26", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754662333/TEST_CASE_WRITING_USING_TEST_RAIL_m7vhg0.mp4", completed: false, active: false },
+                        { title: "TEST RUN - TEST EXECUTION", time: "9:00", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061393/TEST_RUN-TEST_EXECUTION_xeshgn.mov", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "7. MORE EXAMPLES ON TEST CASE WRITING",
+                    lessons: [
+                        { title: "TEST CASE 1", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754659872/TEST_CASE_1_pt1_hdtpsg.mp4", completed: false, active: false },
+                        { title: "TEST CASE 2", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754659871/TEST_CASE_1_pt2_w4tusy.mp4", completed: false, active: false },
+                        { title: "TEST CASE 3", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754659872/TEST_CASE_2_tbl6i4.mp4", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "8. DEFECT MANAGEMENT",
+                    lessons: [
+                        { title: "WHAT IS A BUG", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754061858/WHAT_IS_A_BUG_uf704y.mov", completed: false, active: false },
+                        { title: "BUG REPORTING", time: "3:21", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754662877/BUG_REPORTING_gn97ab.mp4", completed: false, active: false },
+                        // { title: "DEFECT/BUG LIFECYCLE", time: "35:56", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false },
+                        { title: "PRACTICAL SESSION", time: "39:13", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754662877/PRACTICAL_SESSION_mg2qkp.mp4", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "9. MOBILE TESTING",
+                    lessons: [
+                        { title: "INTRODUCTION TO MOBILE TESTING", time: "3:16", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754062367/INTRODUCTION_TO_MOBILE_TESTING_jacfya.mov", completed: false, active: false },
+                        { title: "INTRODUCTION TO BROWSER-STACKS 1", time: "9:49", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754663019/INTRODUCTION_TO_BROWSER_STACKS_PT1_kzgtgk.mp4", completed: false, active: false },
+                        { title: "INTRODUCTION TO BROWSER-STACKS 2", time: "9:49", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754663024/INTRODUCTION_TO_BROWSER_STACKS_PT2_dqdn33.mp4", completed: false, active: false },
+                        { title: "INTRODUCTION TO BROWSER-STACKS 3", time: "9:49", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754663057/INTRODUCTION_TO_BROWSER_STACKS_PT3_xz4orn.mp4", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "10. API (APPLICATION PROGRAMMING INTERFACE)",
+                    lessons: [
+                        { title: "WHAT IS API TESTING", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754663297/WHAT_IS_API_TESTING_exoye2.mp4", completed: false, active: false },
+                        // { title: "DIFFERENCE BETWEEN API TESTING AND GUI TESTING", time: "10:20", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754057581/DIFFERENCES_BETWEEN_API_AND_UNIT_TESTING_hhr8sn.mov", completed: false, active: false },
+                        { title: "TOOLS FOR API TESTING", time: "11:13", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754057582/TOOLS_APPROACH_OF_API_TESTING_ybcbht.mov", completed: false, active: false },
+                        { title: "APPROACH OF API TESTING", time: "12:33", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754663292/TOOLS_APPROACH_OF_API_TESTING_kxep0x.mov", completed: false, active: false },
+                        { title: "DIFFERENCE BETWEEN API TESTING AND UNIT TESTING", time: "13:04", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754057581/DIFFERENCES_BETWEEN_API_AND_UNIT_TESTING_hhr8sn.mov", completed: false, active: false },
+                        // { title: "HOW DO WE DO API TESTING", time: "14:24", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false },
+                        { title: "INTRODUCTION TO POSTMAN", time: "14:43", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754057593/INTRODUCTION_TO_POSTMAN_l0wunx.mov", completed: false, active: false },
+                        { title: "PRACTICAL API TEST USING POSTMAN 1", time: "22:55", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754663289/PRACTICAL_API_TEST_USING_POSTMAN_pt1_ujizjr.mp4", completed: false, active: false },
+                        { title: "PRACTICAL API TEST USING POSTMAN 2", time: "22:55", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1737459941/kww2wfw0dsznlto89gix.mp4", completed: false, active: false }
+                    ],
+                    expanded: false
+                },
+                {
+                    title: "11. DATABASE TESTING",
+                    lessons: [
+                        { title: "INTRODUCTION", time: "", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754062575/INTRODUCTION_fsyiu8.mov", completed: false, active: false },
+                        { title: "WHAT IS DATABASE TESTING", time: "4:50", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754062582/WHAT_DATA_BASE_TESTING_IS_uohtfz.mov", completed: false, active: false },
+                        { title: "WHY IS DATABASE TESTING IMPORTANT", time: "10:13", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754062576/WHY_IS_DATABASE_TESTING_IMPORTANT_u043nn.mov", completed: false, active: false },
+                        { title: "WHAT SHOULD I TEST", time: "15:15", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754062578/WHAT_SHOULD_I_TEST_npxm98.mov", completed: false, active: false },
+                        { title: "HOW TO TEST DATABASE", time: "21:52", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754062571/HOW_TO_TEST_DATABASE_qbss1k.mov", completed: false, active: false },
+                        { title: "DATABASE TESTING TOOLS", time: "26:27", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754666657/DATABASE_TESTING_TOOLS_euewjb.mp4", completed: false, active: false },
+                        { title: "CONCLUSION", time: "56:10", videoId: "https://res.cloudinary.com/dczg9htor/video/upload/v1754666477/CONCLUSION_oisj8j.mov", completed: false, active: false }
+                    ],
+                    expanded: false
+                }
+            ];
+    
+            // DOM elements
+            const videoContainer = document.querySelector('.video-player');
+            const videoPlaceholder = document.getElementById('video-placeholder');
+            const isYouTube = false; // Using direct video files
+            
+            const courseModulesEl = document.getElementById('course-modules');
+            const progressBarEl = document.getElementById('progress-bar');
+            const progressPercentEl = document.getElementById('progress-percent');
+            const progressLessonsEl = document.getElementById('progress-lessons');
+            const completeBtnEl = document.getElementById('complete-btn');
+            const prevBtnEl = document.getElementById('prev-btn');
+            const nextBtnEl = document.getElementById('next-btn');
+            const videoTitleEl = document.querySelector('.video-title');
+            const playIconEl = document.querySelector('.play-icon');
+        
+            // State variables
+            let currentModuleIndex = 0;
+            let currentLessonIndex = 0;
+            let totalLessons = 0;
+            let completedLessons = 0;
+            let currentVideoPlayer = null; // Track the current video player
+        
+            // Initialize the course
+            function initCourse() {
+                // Calculate total lessons
+                totalLessons = courseData.reduce((total, module) => total + module.lessons.length, 0);
+                progressLessonsEl.textContent = `0/${totalLessons} Lessons`;
+                
+                // Render course modules
+                renderCourseModules();
+                
+                // Set up event listeners
+                setupEventListeners();
+            }
+        
+            // Render all course modules and lessons
+            function renderCourseModules() {
+                courseModulesEl.innerHTML = '';
+                
+                courseData.forEach((module, moduleIndex) => {
+                    const moduleEl = document.createElement('li');
+                    moduleEl.className = 'module-item';
+                    
+                    const moduleHeader = document.createElement('div');
+                    moduleHeader.className = `module-header ${module.expanded ? 'active' : ''}`;
+                    moduleHeader.innerHTML = `
+                        <span class="module-title">${module.title}</span>
+                        <span class="module-toggle">${module.expanded ? '▼' : '▲'}</span>
+                    `;
+                    
+                    const lessonList = document.createElement('ul');
+                    lessonList.className = `lesson-list ${module.expanded ? 'show' : ''}`;
+                    
+                    module.lessons.forEach((lesson, lessonIndex) => {
+                        const lessonEl = document.createElement('li');
+                        lessonEl.className = `lesson-item ${lesson.active ? 'active' : ''} ${lesson.completed ? 'completed' : ''}`;
+                        lessonEl.innerHTML = `
+                            <span class="lesson-icon">${lesson.completed ? '✓' : '⬤'}</span>
+                            <span class="lesson-title">${lesson.title}</span>
+                            <span class="lesson-time">${lesson.time}</span>
+                        `;
+                        
+                        // Add click event to lesson
+                        lessonEl.addEventListener('click', () => {
+                            setActiveLesson(moduleIndex, lessonIndex);
+                        });
+                        
+                        lessonList.appendChild(lessonEl);
+                    });
+                    
+                    // Add click event to module header
+                    moduleHeader.addEventListener('click', () => {
+                        courseData[moduleIndex].expanded = !courseData[moduleIndex].expanded;
+                        renderCourseModules();
+                    });
+                    
+                    moduleEl.appendChild(moduleHeader);
+                    moduleEl.appendChild(lessonList);
+                    courseModulesEl.appendChild(moduleEl);
+                });
+                
+                // Update progress
+                updateProgress();
+            }
+        
+            // Set the active lesson
+            function setActiveLesson(moduleIndex, lessonIndex) {
+                // Reset all active states
+                courseData.forEach((module, mIndex) => {
+                    module.lessons.forEach((lesson, lIndex) => {
+                        lesson.active = (mIndex === moduleIndex && lIndex === lessonIndex);
+                    });
+                    
+                    if (mIndex === moduleIndex && !module.expanded) {
+                        module.expanded = true;
+                    }
+                });
+                
+                currentModuleIndex = moduleIndex;
+                currentLessonIndex = lessonIndex;
+                
+                const activeLesson = courseData[moduleIndex].lessons[lessonIndex];
+                videoTitleEl.textContent = activeLesson.title;
+                
+                // Handle video display
+                if (activeLesson.videoId) {
+                    // Clean up previous video player if it exists
+                    if (currentVideoPlayer) {
+                        currentVideoPlayer.pause();
+                        currentVideoPlayer.remove();
+                        currentVideoPlayer = null;
+                    }
+                    
+                    // Create a new video element
+                    currentVideoPlayer = document.createElement('video');
+                    currentVideoPlayer.id = 'html5-video';
+                    currentVideoPlayer.src = activeLesson.videoId;
+                    currentVideoPlayer.controls = true;
+                    currentVideoPlayer.style.width = '100%';
+                    currentVideoPlayer.style.height = '100%';
+                    currentVideoPlayer.style.position = 'absolute';
+                    currentVideoPlayer.style.top = '0';
+                    currentVideoPlayer.style.left = '0';
+                    
+                    // Add event listener for when video ends
+                    currentVideoPlayer.addEventListener('ended', function() {
+                        completeCurrentLesson();
+                    });
+                    
+                    // Add to DOM
+                    videoContainer.insertBefore(currentVideoPlayer, videoPlaceholder);
+                    videoPlaceholder.style.display = 'none';
+                    currentVideoPlayer.style.display = 'block';
+                    
+                    // Try to play the video (may be blocked by browser autoplay policies)
+                    currentVideoPlayer.play().catch(error => {
+                        console.log('Autoplay prevented:', error);
+                        // Show play button if autoplay is blocked
+                        currentVideoPlayer.style.display = 'none';
+                        videoPlaceholder.style.display = 'flex';
+                    });
+                } else {
+                    // No video for this lesson
+                    if (currentVideoPlayer) {
+                        currentVideoPlayer.pause();
+                        currentVideoPlayer.style.display = 'none';
+                    }
+                    videoPlaceholder.style.display = 'flex';
+                }
+                
+                completeBtnEl.disabled = activeLesson.completed;
+                updateNavButtons();
+                renderCourseModules();
+            }
+            
+            // Play icon click handler
+            playIconEl.addEventListener('click', () => {
+                const activeLesson = courseData[currentModuleIndex].lessons[currentLessonIndex];
+                if (activeLesson.videoId && currentVideoPlayer) {
+                    currentVideoPlayer.play()
+                        .then(() => {
+                            currentVideoPlayer.style.display = 'block';
+                            videoPlaceholder.style.display = 'none';
+                        })
+                        .catch(error => {
+                            console.log('Playback failed:', error);
+                        });
+                }
+            });
+        
+            // Mark current lesson as complete
+            function completeCurrentLesson() {
+                const currentLesson = courseData[currentModuleIndex].lessons[currentLessonIndex];
+                
+                if (!currentLesson.completed) {
+                    currentLesson.completed = true;
+                    completedLessons++;
+                    
+                    // Find next lesson
+                    let nextModuleIndex = currentModuleIndex;
+                    let nextLessonIndex = currentLessonIndex + 1;
+                    
+                    // If at end of current module, move to next module
+                    if (nextLessonIndex >= courseData[currentModuleIndex].lessons.length) {
+                        nextModuleIndex++;
+                        nextLessonIndex = 0;
+                        
+                        // If at end of course, stay on last lesson
+                        if (nextModuleIndex >= courseData.length) {
+                            nextModuleIndex = currentModuleIndex;
+                            nextLessonIndex = currentLessonIndex;
+                        }
+                    }
+                    
+                    // Update progress
+                    updateProgress();
+                    
+                    // Set next lesson as active
+                    setActiveLesson(nextModuleIndex, nextLessonIndex);
+                }
+            }
+        
+            // Update progress bar and text
+            function updateProgress() {
+                const percent = Math.round((completedLessons / totalLessons) * 100);
+                progressBarEl.style.width = `${percent}%`;
+                progressPercentEl.textContent = `${percent}% Complete`;
+                progressLessonsEl.textContent = `${completedLessons}/${totalLessons} Lessons`;
+            }
+        
+            // Update navigation buttons state
+            function updateNavButtons() {
+                // Previous button
+                if (currentLessonIndex === 0 && currentModuleIndex === 0) {
+                    prevBtnEl.disabled = true;
+                } else {
+                    prevBtnEl.disabled = false;
+                }
+                
+                // Next button
+                if (currentLessonIndex === courseData[currentModuleIndex].lessons.length - 1 && 
+                    currentModuleIndex === courseData.length - 1) {
+                    nextBtnEl.disabled = true;
+                } else {
+                    nextBtnEl.disabled = false;
+                }
+            }
+        
+            // Navigate to previous lesson
+            function goToPreviousLesson() {
+                let prevModuleIndex = currentModuleIndex;
+                let prevLessonIndex = currentLessonIndex - 1;
+                
+                // If at start of current module, move to previous module
+                if (prevLessonIndex < 0) {
+                    prevModuleIndex--;
+                    
+                    // If not at start of course
+                    if (prevModuleIndex >= 0) {
+                        prevLessonIndex = courseData[prevModuleIndex].lessons.length - 1;
+                    } else {
+                        // Already at first lesson, do nothing
+                        prevModuleIndex = currentModuleIndex;
+                        prevLessonIndex = currentLessonIndex;
+                    }
+                }
+                
+                // Set previous lesson as active
+                setActiveLesson(prevModuleIndex, prevLessonIndex);
+            }
+        
+            // Navigate to next lesson
+            function goToNextLesson() {
+                let nextModuleIndex = currentModuleIndex;
+                let nextLessonIndex = currentLessonIndex + 1;
+                
+                // If at end of current module, move to next module
+                if (nextLessonIndex >= courseData[currentModuleIndex].lessons.length) {
+                    nextModuleIndex++;
+                    nextLessonIndex = 0;
+                    
+                    // If at end of course, stay on last lesson
+                    if (nextModuleIndex >= courseData.length) {
+                        nextModuleIndex = currentModuleIndex;
+                        nextLessonIndex = currentLessonIndex;
+                    }
+                }
+                
+                // Set next lesson as active
+                setActiveLesson(nextModuleIndex, nextLessonIndex);
+            }
+        
+            // Set up event listeners
+            function setupEventListeners() {
+                // Complete button
+                completeBtnEl.addEventListener('click', completeCurrentLesson);
+                
+                // Navigation buttons
+                prevBtnEl.addEventListener('click', goToPreviousLesson);
+                nextBtnEl.addEventListener('click', goToNextLesson);
+            }
+        
+            // Initialize the course when page loads
+            window.addEventListener('DOMContentLoaded', initCourse);
+        </script>
+    </body>
+</html>
